@@ -1,0 +1,63 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.SwaggerHub.com/tutorial/1.0.0
+info:
+  description: This is a simple API
+  version: "1.0.0"
+  title: Simple Inventory API
+  contact:
+    email: you@your-company.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+paths:
+  /student/{student_id}:
+    get:
+      summary: gets student
+      operationId: getStudentById
+      description: |
+        Returns a single student
+      parameters:
+        - in: path
+          name: student_id
+          description: the uid
+          required: true
+          schema:
+            type: number
+            format: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '400':
+          description: invalid ID
+        '404':
+          description: not found
+  /student:
+    post:
+      summary: Add a new student
+      operationId: addStudent
+      description: Adds an item to the system
+      responses:
+        '200':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: number
+                format: integer
+        '400':
+          description: 'invalid input, object invalid'
+        '409':
+          description: an existing already exists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+        description: Student item to add
