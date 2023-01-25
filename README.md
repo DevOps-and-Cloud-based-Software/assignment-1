@@ -1,5 +1,7 @@
 % RESTful services, docker and Kubernetes
 
+
+
 # Introduction
 
   In this tutorial we will use OpenAPI to define a RESTful web service and Python to implement it.  
@@ -8,11 +10,11 @@ The RESTful web service will be using a database to store data.
 
 More specifically the steps of this tutorial are the following: 
 
-1. Write OpenAPI definition using swaggerhub
+1. Write OpenAPI definition using SwaggerHub
 2. Generate the service stubs in Python and implement the logic
-4. Build Test and Publish Docker Image 
-6. Write Tests
-7. Deploy Web Service on Kubernetes (microk8s)
+3. Build Test and Publish Docker Image 
+4. Write Tests
+5. Deploy Web Service on Kubernetes (MicroK8s)
 
 
 # Reporting and assessment
@@ -20,14 +22,13 @@ More specifically the steps of this tutorial are the following:
 ## Reporting
 At the end of this assignment you are expected to submit the following:
 
-  * Each student should write a short report (max 3 pages) with the following structure: 
+  * Each student should write a short report (max 4 pages) with the following structure: 
     + **Introduction**: List which of the DevOps stages you practiced with this assignment and what are their primary objectives.
-    + **OpenAPI Exercises**: Report on the following exercises (for details see on the Section OpenAPI Exercises):
-      - Define Objects
-      - Add Delete method
-    + **Docker Exercises (Optional)**: If you choose to integrate an external database report on how you modified your code and Dockerfile to connect to DB.
-    + **Question 1**: In the Docker file we use the 'python:3.6-alpine' image as a base image. What are the advantage and advantages of using the Alpine Linux distribution in Docker.
-    + **Question 2**: Based on the use case discussion during the lecture, please discuss the advantages and risks of applying agile approach.
+    + **OpenAPI Exercises**: Report on the following exercises (for details see on the Section  [OpenAPI Exercises](#openapi-exercises)):
+      - [Define Objects](#define-objects)
+      - [Add Delete method](#add-delete-method)
+    + **[MongoDB Integration (Optional)](#mongodb-integration--optional-)**: If you choose to integrate an external database report on how the modifications you had to make on your code and Dockerfile to connect to DB.
+    + **Question 1**: In the Docker file we use the 'python:3.9-alpine' image as a base image. What are the advantage and disadvantages of using the Alpine Linux distribution in Docker.
 
 ## Assessment
 
@@ -37,11 +38,11 @@ At the end of this assignment you are expected to submit the following:
 
  In order to be given a grade you must submit the following:
 
- * Written report (see above for details)
+ * Written report (see [Reporting](#reporting) for details)
  * Name of the published docker(s) in [https://hub.docker.com/](https://hub.docker.com/). Must be able to perform (docker pull <REPO/NAME>)
- * Git repository link 
- * If you choose the extra task i.e. the external database integration submit **only** the code using the external database. 
- * If you choose the extra task i.e. the external database integration the testing will be done using the 'docker-compose.yaml' provided below  
+ * Git repository link
+ * If you choose the optional exercise task i.e. the MongoDB integration submit **only** the code for connecting to MongoDB. 
+ * If you choose the optional exercise task i.e. the MongoDB integration the testing will be done using the '[docker-compose.yaml](docker-compose.yaml)' provided below  
 
  **Do not add your code when submitting in Canvas.**
 
@@ -78,8 +79,8 @@ If you don’t have an account already follow these instructions: [https://githu
 ## Setup Docker Hub
 If you don’t have an account already follow these instructions: [https://hub.docker.com/signup](https://hub.docker.com/signup) 
 
-## Swaggerhub Account
-If you have GitHub Account you may go to [https://app.swaggerhub.com/login](https://app.swaggerhub.com/login) and select 'Log In with GitHub'. Alternatively, you can select to sign up.
+## SwaggerHub Account
+If you have GitHub Account you may go to [https://app.SwaggerHub.com/login](https://app.SwaggerHub.com/login) and select 'Log In with GitHub'. Alternatively, you can select to sign up.
 
 ## Install Docker and Docker Compose on your Local machine
 You can find instructions on how to install Docker here: 
@@ -112,7 +113,7 @@ In this section we will define a web service interface that will support the Cre
 for manipulating resources using OpenAPI. To get a more in-depth understanding of Swagger and OpenAPI you may follow this tutorial 
 [https://idratherbewriting.com/learnapidoc/openapi_tutorial.html](https://idratherbewriting.com/learnapidoc/openapi_tutorial.html)
 
-Log in to your Swaggerhub account at [https://app.swaggerhub.com/login](https://app.swaggerhub.com/login) and select 'Create New' -> 'Create New API'
+Log in to your SwaggerHub account at [https://app.SwaggerHub.com/login](https://app.SwaggerHub.com/login) and select 'Create New' -> 'Create New API'
 
 <img src="https://gitlab-fnwi.uva.nl/skoulou1/devops-material/-/raw/main/week1/images/swhub1.png" alt="swagger" width="800"/>
 
@@ -134,7 +135,7 @@ openapi: 3.0.0
 servers:
   # Added by API Auto Mocking Plugin
   - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/tutorial/1.0.0
+    url: https://virtserver.SwaggerHub.com/tutorial/1.0.0
 info:
   description: This is a simple API
   version: "1.0.0"
@@ -292,7 +293,7 @@ git push -u origin master
 ```
 More information on git can be found here: [https://phoenixnap.com/kb/how-to-use-git](https://phoenixnap.com/kb/how-to-use-git)
 
-## Implement the logic
+### Implement the logic
 
 In Pycharm create a package named 'service'. To do that right click on the 'swagger_server' package select 'New'->
 'Python Package' and enter the name 'service'
@@ -402,7 +403,7 @@ in the Pycharm project.
 
 and update the python version from:
 ```Dockerfile
-FROM python:3.6-alpine
+FROM python:3.9-alpine
 ```
 To:
 ```Dockerfile
@@ -450,33 +451,35 @@ COPY requirements.txt /usr/src/app/
         docker push $IMAGE_ID
 ```
 
-# Deploy Web Service on Kubernetes (microk8s)
+## MongoDB Integration (Optional)
 
-## Install microk8s 
+# Deploy Web Service on Kubernetes (MicroK8s)
+
+## Install MicroK8s 
 
 If you have access to a Kubernetes cluster you may skip this step
 
-You can find microk8s installation instructions: [https://microk8s.io/](https://microk8s.io/)
+You can find MicroK8s installation instructions: [https://MicroK8s.io/](https://MicroK8s.io/)
 
-If you have access to a cloud VM you may install microk8s there. Alternatively you may also use 
+If you have access to a cloud VM you may install MicroK8s there. Alternatively you may also use 
 VirtualBox: [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 
-After you complete the installation make sure you start microk8s and enable DNS
+After you complete the installation make sure you start MicroK8s and enable DNS
 ```shell
-microk8s start
-microk8s enable dns
+MicroK8s start
+MicroK8s enable dns
 ```
 
 ## Test K8s Cluster
 
 This is a basic Kubernetes deployment of Nginx. On the master node create a Nginx deployment:
 ```shell
-microk8s kubectl create deployment nginx --image=nginx
+MicroK8s kubectl create deployment nginx --image=nginx
 ```
 
 You may check your Nginx deployment by typing:
 ```shell
-microk8s kubectl get all
+MicroK8s kubectl get all
 ```
 
 The output should look like this:
@@ -496,7 +499,7 @@ replicaset.apps/nginx-6799fc88d8   1         1         0       7s
 You will notice in the first line 'ContainerCreating'. This means that the K8s cluster is downloading and starting the 
 Nginx container. After some minutes if you run again:
 ```shell
-microk8s kubectl get all
+MicroK8s kubectl get all
 ```
 
 The output should look like this:
@@ -517,12 +520,12 @@ replicaset.apps/nginx-6799fc88d8   1         1         1       40s
 At this point Nginx is running on the K8s cluster, however it is only accessible from within the cluster. To expose 
 Nginx to the outside world we should type: 
 ```shell
-microk8s kubectl create service nodeport nginx --tcp=80:80
+MicroK8s kubectl create service nodeport nginx --tcp=80:80
 ```
 
 To check your Nginx deployment type:
 ```shell
-microk8s kubectl get all
+MicroK8s kubectl get all
 ```
 
 You should see the among others the line:
@@ -545,7 +548,7 @@ This means that port 80 is mapped on port 30155 of each node in the K8s cluster.
 
 You may now delete the Nginx service by using:
 ```shell
-microk8s kubectl delete service/nginx
+MicroK8s kubectl delete service/nginx
 ```
 
 ## Deploy Web Service on K8s Cluster
@@ -659,12 +662,12 @@ spec:
 
 To create all the deployments and services type in the K8s folder:
 ```shell
-microk8s kubectl apply -f .
+MicroK8s kubectl apply -f .
 ```
 
 This should create the my-temp-service deployments and services. To see what is running on the cluster type:
 ```shell
-microk8s kubectl get all
+MicroK8s kubectl get all
 ```
 You should see something like this:
 ```shell
