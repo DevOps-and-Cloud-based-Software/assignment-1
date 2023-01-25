@@ -42,49 +42,58 @@ At the end of this assignment you are expected to submit the following:
  * Name of the published docker(s) in [https://hub.docker.com/](https://hub.docker.com/). Must be able to perform (docker pull <REPO/NAME>)
  * Git repository link
  * If you choose the optional exercise task i.e. the MongoDB integration submit **only** the code for connecting to MongoDB. 
- * If you choose the optional exercise task i.e. the MongoDB integration the testing will be done using the '[docker-compose.yaml](docker-compose.yaml)' provided below  
+ * If you choose the optional exercise task i.e. the MongoDB integration the testing will be done using the '[docker-compose.yaml](https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/docker-compose.yaml)'
 
- **Do not add your code when submitting in Canvas.**
+ **Do not add your code in Canvas or in your report.**
 
  **All links such as DockerHub and Git must be accessible from the day of submission and onwards.**
 
 ---
 
 
-* If the source code and dockerized service pass all the tests defined in newman you get 70%.
-* A passing mark will be given if the source code and dockerized service pass tests 1-5 in newman (see Section Write Tests).
-* The tests will run on the docker created from source i.e. from building the docker file: docker build . and the docker image from your DockerHub account 
-* An extra point will be given for the Docker Exercises i.e. the external database integration
+* If the source code and dockerized service pass all the tests defined in newman you get 60%.
+* A passing mark will be given if the source code and dockerized service pass tests 1-5 in newman (see Section [Build Test and Publish Docker Image](#build-test-and-publish-docker-image)).
+* The tests will run on the docker created from source i.e. from building the docker file from source and the docker image from your DockerHub account. 
+* An extra point will be given for the [MongoDB Integration (Optional)](#mongodb-integration--optional-).
 * The rest will be determined by your report. 
 
 # Background
 
 ## OpenAPI and Swagger
-Swagger is an implementation of OpenAPI. Swagger contains a tool that helps developers design, build, document, and consume RESTful Web services. Applications implemented based on OpenAPI interface files can automatically generate documentation of methods, parameters and models. This helps keep the documentation, client libraries, and source code in sync.
+Swagger is an implementation of OpenAPI. Swagger contains a tool that helps developers design, build, document, and consume RESTful Web services. 
+Applications implemented based on OpenAPI interface files can automatically generate documentation of methods, parameters and models. This helps keep the documentation, client libraries, and source code in sync.
+You can find a short technical explanation here [https://www.youtube.com/watch?v=pRS9LRBgjYg](https://www.youtube.com/watch?v=pRS9LRBgjYg)
 
 ## Git
 Git is an open source distributed version control system. Version control helps keep track of changes in a project and allows for collaboration between many developers.
+You can find a short technical explanation here https://www.youtube.com/watch?v=wpISo9TNjfU
 
 ## GitHub Actions 
 GitHub Actions automates your software development workflows from within GitHub. In GitHub Actions, a workflow is an automated process that you set up in your GitHub repository. You can build, test, package, release, or deploy any project on GitHub with a workflow.
 
 ## Docker
 Docker performs operating-system-level virtualization, also known as "containerization". Docker uses the resource isolation features of the Linux kernel to allow independent "containers" to run within a Linux instance.
+You can find a short technical explanation on containerization here https://www.youtube.com/watch?v=0qotVMX-J5s
+
+
+## Kubernetes (MicroK8s)
+Kubernetes is an open-source container orchestration system for automating software deployment, scaling, and management. 
+You can find a short technical explanation on container orchestration here https://www.youtube.com/watch?v=kBF6Bvth0zw
+
 
 # Prepare your Development Environment 
 
 ## Create GitHub Account
-If you don’t have an account already follow these instructions: [https://github.com/join](https://github.com/join) 
+If you don’t have an account already follow these instructions: https://github.com/join 
 
 ## Setup Docker Hub
-If you don’t have an account already follow these instructions: [https://hub.docker.com/signup](https://hub.docker.com/signup) 
+If you don’t have an account already follow these instructions: https://hub.docker.com/signup 
 
 ## SwaggerHub Account
-If you have GitHub Account you may go to [https://app.SwaggerHub.com/login](https://app.SwaggerHub.com/login) and select 'Log In with GitHub'. Alternatively, you can select to sign up.
+If you have GitHub Account you may go to https://app.SwaggerHub.com/login and select 'Log In with GitHub'. Alternatively, you can select to sign up.
 
 ## Install Docker and Docker Compose on your Local machine
-You can find instructions on how to install Docker here: 
-[https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/).
+You can find instructions on how to install Docker here: https://docs.docker.com/get-docker/.
 You may also find a detailed tutorial on Docker here: [https://docker-curriculum.com/](https://docker-curriculum.com/).
 
 To test if your installation is running you may test docker by typing:
@@ -106,7 +115,7 @@ If you are using snap you can type:
 sudo snap install pycharm-community --classic
 ```
 You may also find a detailed tutorial on Pycharm here: 
-[https://www.jetbrains.com/help/pycharm/creating-and-running-your-first-python-project.html](https://www.jetbrains.com/help/pycharm/creating-and-running-your-first-python-project.html
+https://www.jetbrains.com/help/pycharm/creating-and-running-your-first-python-project.html
 
 # Write OpenAPI Definition
 In this section we will define a web service interface that will support the Create, Read, Update, Delete (CRUD) pattern 
