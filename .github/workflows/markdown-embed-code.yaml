@@ -5,14 +5,18 @@ on:
 
 
 jobs:
-  embed-example:
+  embed-code:
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkout current repo"
-        uses: actions/checkout@v3
-      - name: "Run entrypoint script."
-        uses: urmzd/embed-md@v1.0.0
-        id: "embed-code"
+      - uses: actions/checkout@v2
         with:
-          markdown-files: "README.md"
-          commit-message: "embed code"
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+          ref: ${{ github.head_ref }}
+
+      - uses: tokusumi/markdown-embed-code@main
+        with:
+          markdown: "README.md"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          message: "synchronizing Readme"
+          silent: true
