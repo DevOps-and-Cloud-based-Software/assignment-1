@@ -124,15 +124,15 @@ for manipulating resources using OpenAPI. To get a more in-depth understanding o
 
 Log in to your SwaggerHub account at [https://app.SwaggerHub.com/login](https://app.SwaggerHub.com/login) and select 'Create New' -> 'Create New API'
 
-<img src="https://gitlab-fnwi.uva.nl/skoulou1/devops-material/-/raw/main/week1/images/swhub1.png" alt="swagger" width="800"/>
+<img src="/images/swhub1.png" alt="swagger" width="800"/>
 
 Then select version 3.0.0 and 'Template' 'Simple API' and press 'CREATE API'.
 
-<img src="https://gitlab-fnwi.uva.nl/skoulou1/devops-material/-/raw/main/week1/images/swgub2.png" alt="swagger" width="800"/>
+<img src="/images/swgub2.png" alt="swagger" width="800"/>
 
 You will get a OpenAPI template
 
-<img src="https://gitlab-fnwi.uva.nl/skoulou1/devops-material/-/raw/main/week1/images/swgub3.png" alt="swagger" width="800"/>
+<img src="/images/swgub3.png" alt="swagger" width="800"/>
 
 Name your API 'tutorial'.
 
@@ -306,7 +306,7 @@ More information on git can be found here: [https://phoenixnap.com/kb/how-to-use
 
 In Pycharm create a package named 'service'. To do that right click on the 'swagger_server' package select 'New'->
 'Python Package' and enter the name 'service'
-<img src="https://gitlab-fnwi.uva.nl/skoulou1/devops-material/-/raw/main/week1/images/pych7.png" alt="swagger" width="800"/>
+<img src="/images/pych7.png" alt="swagger" width="800"/>
 
 Inside the service package create a new python file named 'student_service'
 
