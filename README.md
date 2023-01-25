@@ -143,8 +143,6 @@ Replace the definition with the following:
 
 ```
 
-
-
 You will notice that the editor at the bottom throws some errors:
 ```
 Errors (3)
