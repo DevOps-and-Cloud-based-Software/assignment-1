@@ -5,18 +5,12 @@ on:
 
 
 jobs:
-  embed-code:
+  build:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v2
-        with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-          ref: ${{ github.head_ref }}
-
-      - uses: tokusumi/markdown-embed-code@main
-        with:
-          markdown: "README.md"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          message: "synchronizing Readme"
-          silent: true
+      - uses: actions/checkout@v3
+      - name: Markdown Code Embed
+        uses: ippie52/markdown_code_embed_action@1.0
+        with: 
+          args: '-s'
