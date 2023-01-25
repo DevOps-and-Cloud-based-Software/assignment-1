@@ -1,4 +1,4 @@
-% RESTful services, docker and Kubernetes
+% RESTful services, Docker and Kubernetes
 
 
 
@@ -126,7 +126,7 @@ Log in to your SwaggerHub account at [https://app.SwaggerHub.com/login](https://
 
 <img src="/images/swhub1.png" alt="swagger" width="800"/>
 
-Then select version 3.0.0 and 'Template' 'Simple API' and press 'CREATE API'.
+Then select version 3.0.x and 'Template' 'Simple API' and press 'CREATE API'.
 
 <img src="/images/swgub2.png" alt="swagger" width="800"/>
 
@@ -137,11 +137,7 @@ You will get a OpenAPI template
 Name your API 'tutorial'.
 
 
-Replace the definition with the following:
-
-```YAML:openAPI_1.yaml
-
-```
+Replace the definition with the following: [openAPI_1.yaml](openAPI_1.yaml)
 
 You will notice that the editor at the bottom throws some errors:
 ```
@@ -157,8 +153,13 @@ You can find more about '$refs' here: [https://swagger.io/docs/specification/usi
 ## OpenAPI Exercises
 
 ### Define Objects
-Scroll down to the bottom of the page and create a new node called 'components', a node 
-'schemas' under that and a node called 'Student' under that. The code should look like this:
+Scroll down to the bottom of the page and create the following nodes:
+* components
+  * schemas
+    * Student
+    * GradeRecord
+
+The code should look like this:
 ```yaml
 components:
   schemas:
@@ -202,13 +203,11 @@ The GradeRecord properties to define are:
 
  **NOTE**
 
- Take not on which properties are required and which are not. This will affect the services' validation process.
+ Note which properties are required and which are not. This will affect the services' validation process.
  To get more information on the 'required' see: https://swagger.io/docs/specification/data-models/data-types/ in the 
  'Required Properties' Section.
 
 ---
-
-
 
 It is useful to add 'example' fields in the properties. That way you API is easier to consume.
 
@@ -226,7 +225,20 @@ method. Under the '/student/{student_id}' path add the following:
       description: |
         delete a single student
       parameters:
-string "do some magic!". 
+        
+```
+## Generate Python Code
+
+Now that we have the OpenAPI definitions we can create the server stub on python. Select 'Export'->'Server Stub'->
+'python-flask'
+
+<img src="/images/swgub6.png" alt="swagger" width="800"/>
+
+
+Save the 'python-flask-server-generated.zip' and unzip the archive. Open Pycharm and open the project.
+
+<img src="/images/pych1.png" alt="swagger" width="800"/>
+
 
 ## Create Git Repository and Commit the Code
 Create a git repository. Go to the directory of the code and initialize the git repository and 
@@ -238,7 +250,6 @@ git commit -m "first commit"
 git remote add origin <REPOSETORY_URL>
 git push -u origin master
 ```
-More information on git can be found here: [https://phoenixnap.com/kb/how-to-use-git](https://phoenixnap.com/kb/how-to-use-git)
 
 ### Implement the logic
 
