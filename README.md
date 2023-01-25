@@ -9,7 +9,7 @@ The RESTful web service will be using a database to store data.
 More specifically the steps of this tutorial are the following: 
 
 1. Write OpenAPI definition using swaggerhub
-2. Generate the server stubs in Python and implement the logic
+2. Generate the service stubs in Python and implement the logic
 4. Build Test and Publish Docker Image 
 6. Write Tests
 7. Deploy Web Service on Kubernetes (microk8s)
