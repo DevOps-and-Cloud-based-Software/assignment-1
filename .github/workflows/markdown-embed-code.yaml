@@ -1,9 +1,7 @@
 name: Embed code in README
 
 on:
-  pull_request:
-    branches:
-      - main
+  [pull_request,push]
 
 jobs:
   embed-code:
