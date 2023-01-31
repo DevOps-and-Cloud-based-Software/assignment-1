@@ -203,7 +203,7 @@ The GradeRecord properties to define are:
 
  **NOTE**
 
- Take not on which properties are required and which are not. This will affect the services' validation process.
+ Take note on which properties are required and which are not. This will affect the services' validation process.
  To get more information on the 'required' see: https://swagger.io/docs/specification/data-models/data-types/ in the 
  'Required Properties' Section.
 
