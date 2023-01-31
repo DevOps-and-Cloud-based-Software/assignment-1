@@ -227,8 +227,19 @@ method. Under the '/student/{student_id}' path add the following:
       description: |
         delete a single student
       parameters:
-string "do some magic!". 
+        - in: path
+          name: student_id
+          description: the uid
+          required: true
+          schema:
+            type: number
+            format: integer
+      responses:
+        …...
 ```
+You will need to fill in the proper responses for 200, 400, and 404. More information about responses can be found here: https://swagger.io/docs/specification/describing-responses/
+Now that we have the definition completed we can try some mockup calls. Press 'SAVE' and select the POST method and press execute. You should get an example of all the responses.
+
 
 ## Create Git Repository and Commit the Code
 Create a git repository. Go to the directory of the code and initialize the git repository and 
