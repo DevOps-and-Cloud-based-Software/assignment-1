@@ -228,6 +228,7 @@ method. Under the '/student/{student_id}' path add the following:
         delete a single student
       parameters:
 string "do some magic!". 
+```
 
 ## Create Git Repository and Commit the Code
 Create a git repository. Go to the directory of the code and initialize the git repository and 
