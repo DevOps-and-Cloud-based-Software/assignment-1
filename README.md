@@ -139,7 +139,8 @@ Name your API 'tutorial'.
 
 Replace the definition with the following:
 
-```YAML:openAPI_1.yaml
+```
+YAML:openAPI_1.yaml
 
 ```
 
