@@ -240,37 +240,39 @@ method. Under the '/student/{student_id}' path add the following:
 You will need to fill in the proper responses for 200, 400, and 404. More information about responses can be found here: https://swagger.io/docs/specification/describing-responses/
 Now that we have the definition completed we can try some mockup calls. Press 'SAVE' and select the POST method and press `Try it out` and then `Execute`. You should get an example of all the responses.
 
-Generate the Server Stubs
-Now that we have the OpenAPI definitions we can create the server stub on python. Select
-&#39;Export&#39;-&gt;&#39;Server Stub&#39;-&gt; &#39;python-flask&#39;
+Now that we have the OpenAPI definitions we can create the server stub on python. Select 'Export'->'Server Stub'-> 'python-flask' 
+![afbeelding](https://user-images.githubusercontent.com/46674631/216041475-96bae3b1-0b45-44b6-a0fb-aa0751d85c1f.png)
 
-Save the &#39;python-flask-server-generated.zip&#39; and unzip the archive. Open Pycharm and open
-the project by selecting &#39;File&#39;-&gt;&#39;Open&#39; and selecting the unzipped folder.
+Save the 'python-flask-server-generated.zip' and unzip the archive. Open Pycharm and open the project by selecting 'File'->'Open' and selecting the unzipped folder.
+![afbeelding](https://user-images.githubusercontent.com/46674631/216041551-d4672c09-d0e5-4b35-bafc-dea9cc5dfef1.png)
 
-To create the virtual environment for the project go to &#39;File&#39;-&gt;&#39;Settings&#39;-&gt;&#39;Project&#39;-&gt;&#39;Python
-Interpreter&#39; or ‘Pycharm&#39;-&gt;&#39;Preferences&#39;-&gt;Project&#39;-&gt;&#39;Python Interpreter&#39;. Select Python version
-3.8 or later. Then select the gear icon to add a new environment:
+To create the virtual environment for the project go to 'File'->'Settings'->'Project'->'Python Interpreter' or ‘Pycharm'->'Preferences'->Project'->'Python Interpreter'. Select Python version 3.8 or later. Then select the gear icon to add a new environment:
+![afbeelding](https://user-images.githubusercontent.com/46674631/216041619-405b58e4-77cf-46bb-9ce4-cd738450b853.png)
 
-Select &#39;New environment&#39; and press &#39;OK&#39;
+Select 'New environment' and press 'OK' 
 Replace the requirements.txt file with the following packages: requirements.txt
-Open the &#39;__main__.py&#39; file and select from the top &#39;install requirements&#39; to install the packages
-specified in the requirements.txt file
 
-Press Run to start the flask server:
+Open the '__main__.py' file and select from the top 'install requirements' to install the packages specified in the requirements.txt file
+![afbeelding](https://user-images.githubusercontent.com/46674631/216041840-f9aa83ad-77bc-47c1-891f-d88920ad299a.png)
 
-The UI API of your service will be in http://localhost:8080/tutorial/1.0.0/ui/. This is the same as
-the path defined in the OpenAPI definition in the section &#39;servers&#39;:
+Press Run to start the flask server: 
+![afbeelding](https://user-images.githubusercontent.com/46674631/216041908-daa57483-059f-4ab9-9398-9fdd6f2d4d8c.png)
+
+The UI API of your service will be in http://localhost:8080/tutorial/1.0.0/ui/. This is the same as the path defined in the OpenAPI definition in the section 'servers':
+```
 openapi: 3.0.0
 servers:
-# Added by API Auto Mocking Plugin
-- description: SwaggerHub API Auto Mocking
-url: https://virtserver.swaggerhub.com/tutorial/1.0.0
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/tutorial/1.0.0
+```
 
-You should see a similar page as the mockup in swaggerhub. Press &#39;Try it out&#39;:
+You should see a similar page as the mockup in swaggerhub. Press 'Try it out': 
+![afbeelding](https://user-images.githubusercontent.com/46674631/216042134-a9311dd5-de51-48be-862c-26ef33084cd4.png)
 
-The response body should be: &quot;do some magic!&quot;
-In Pycharm if you open the &#39;default_controller.py&#39; file, you&#39;ll see that the method &#39;add_student&#39;
-returns the string &quot;do some magic!&quot;.
+The response body should be: "do some magic!"
+In Pycharm if you open the 'default_controller.py' file, you'll see that the method 'add_student' returns the string "do some magic!".
+
 
 
 ## Create Git Repository and Commit the Code
