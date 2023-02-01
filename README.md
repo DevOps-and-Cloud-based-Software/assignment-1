@@ -240,6 +240,8 @@ method. Under the '/student/{student_id}' path add the following:
 You will need to fill in the proper responses for 200, 400, and 404. More information about responses can be found here: https://swagger.io/docs/specification/describing-responses/
 Now that we have the definition completed we can try some mockup calls. Press 'SAVE' and select the POST method and press `Try it out` and then `Execute`. You should get an example of all the responses.
 
+# Generate the Server Stubs
+
 Now that we have the OpenAPI definitions we can create the server stub on python. Select 'Export'->'Server Stub'-> 'python-flask' 
 ![afbeelding](https://user-images.githubusercontent.com/46674631/216041475-96bae3b1-0b45-44b6-a0fb-aa0751d85c1f.png)
 
