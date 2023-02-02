@@ -247,7 +247,8 @@ To create the virtual environment for the project go to 'File'->'Settings'->'Pro
 ![afbeelding](https://user-images.githubusercontent.com/46674631/216041619-405b58e4-77cf-46bb-9ce4-cd738450b853.png)
 
 Select 'New environment' and press 'OK' 
-Replace the requirements.txt file with the following packages: requirements.txt
+
+Add `tinydb==4.7.1` at the end of the requirements.txt file.
 
 Open the '__main__.py' file and select from the top 'install requirements' to install the packages specified in the requirements.txt file
 ![afbeelding](https://user-images.githubusercontent.com/46674631/216041840-f9aa83ad-77bc-47c1-891f-d88920ad299a.png)
