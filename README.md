@@ -42,7 +42,7 @@ At the end of this assignment you are expected to submit the following:
  * Name of the published docker(s) in [https://hub.docker.com/](https://hub.docker.com/). Must be able to perform (docker pull <REPO/NAME>)
  * Git repository link
  * If you choose the optional exercise task i.e. the MongoDB integration submit **only** the code for connecting to MongoDB. 
- * If you choose the optional exercise task i.e. the MongoDB integration the testing will be done using the '[docker-compose.yaml](https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/docker-compose.yaml)'
+ * If you choose the optional exercise task i.e. the MongoDB integration the testing will be done using the '[docker-compose.yaml](docker-compose.yaml)'
 
  **Do not add your code in Canvas or in your report.**
 
@@ -137,12 +137,7 @@ You will get a OpenAPI template
 Name your API 'tutorial'.
 
 
-Replace the definition with the following:
-
-```
-YAML:openAPI_1.yaml
-
-```
+Replace the definition with the contents of [openAPI_1.yaml](openAPI_1.yaml).
 
 You will notice that the editor at the bottom throws some errors:
 ```
