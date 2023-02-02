@@ -217,7 +217,7 @@ The API definition at the moment only has 'GET' and 'POST' methods. We will add 
 method. Under the '/student/{student_id}' path add the following:
 ```yaml
     delete:
-      summary: gets student
+      summary: Delete a student
       operationId: deleteStudent
       description: |
         delete a single student
@@ -345,7 +345,7 @@ def delete(student_id=None):
 Now you can add the corresponding methods in the 'default_controller.py'. To do that add in the top of the file:
 
 ```python
-from swagger_server.service.student_servcie import *
+from swagger_server.service.student_service import *
 ```
 
 And in the 'add_student' student method we add the 'add(body)' in the rerun statement so now the method becomes :
