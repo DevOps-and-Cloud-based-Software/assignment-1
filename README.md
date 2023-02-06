@@ -43,7 +43,7 @@ At the end of this assignment you are expected to submit the following:
  * Name of the published docker(s) in [https://hub.docker.com/](https://hub.docker.com/). Must be able to perform (docker pull <REPO/NAME>)
  * Git repository link
  * If you choose the optional exercise task i.e. the MongoDB integration submit **only** the code for connecting to MongoDB. 
- * If you choose the optional exercise task i.e. the MongoDB integration the testing will be done using the '[docker-compose.yaml](https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/docker-compose.yaml)'
+ * If you choose the optional exercise task i.e. the MongoDB integration the testing will be done using the '[docker-compose.yaml](docker-compose.yaml)'
 
  **Do not add your code in Canvas or in your report.**
 
@@ -221,7 +221,7 @@ The API definition at the moment only has 'GET' and 'POST' methods. We will add 
 method. Under the '/student/{student_id}' path add the following:
 ```yaml
     delete:
-      summary: gets student
+      summary: Delete a student
       operationId: deleteStudent
       description: |
         delete a single student
@@ -314,7 +314,7 @@ In the student_service add the following code: [student_service.py](student_serv
 Now you can add the corresponding methods in the 'default_controller.py'. To do that on the top of the 'default_controller.py' add:
 
 ```python
-from swagger_server.service.student_servcie import *
+from swagger_server.service.student_service import *
 ```
 
 And in the 'add_student' student method we add the 'add(body)' in the rerun statement so now the method becomes :
