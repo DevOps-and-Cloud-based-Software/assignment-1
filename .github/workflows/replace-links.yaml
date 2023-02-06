@@ -4,11 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Build docker
-        run: |
-          cp README.md README-WITH-links.md
-
+      - uses: actions/checkout@v2
       - name: Find and Replace
         uses: nguyenvanuyn96/str-find-and-replace-action@master
         with:
