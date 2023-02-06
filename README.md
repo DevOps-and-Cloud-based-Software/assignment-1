@@ -1,4 +1,4 @@
-% RESTful services, docker and Kubernetes
+% RESTful services, Docker and Kubernetes
 
 
 
@@ -10,11 +10,12 @@ The RESTful web service will be using a database to store data.
 
 More specifically the steps of this tutorial are the following: 
 
-1. Write OpenAPI definition using SwaggerHub
-2. Generate the service stubs in Python and implement the logic
-3. Build Test and Publish Docker Image 
-4. Write Tests
-5. Deploy Web Service on Kubernetes (MicroK8s)
+1. [Write OpenAPI definition using SwaggerHub](#write-openapi-definition)
+2. [Generate the service stubs in Python](#generate-python-code)
+3. [Implement the logic](#implement-the-logic)
+4. [Build Test ands Docker Image](#build-test-and-docker-image) 
+5. [Write Tests](#write-tests)
+6. [Deploy Web Service on Kubernetes (MicroK8s)](#deploy-web-service-on-k8s-cluster)
 
 
 # Reporting and assessment
@@ -52,7 +53,7 @@ At the end of this assignment you are expected to submit the following:
 
 
 * If the source code and dockerized service pass all the tests defined in newman you get 60%.
-* A passing mark will be given if the source code and dockerized service pass tests 1-5 in newman (see Section [Build Test and Publish Docker Image](#build-test-and-publish-docker-image)).
+* A passing mark will be given if the source code and dockerized service pass tests 1-5 in newman (see Section [Build Test and Docker Image](#build-test-and-publish-docker-image)).
 * The tests will run on the docker created from source i.e. from building the docker file from source and the docker image from your DockerHub account. 
 * An extra point will be given for the [MongoDB Integration (Optional)](#mongodb-integration--optional-).
 * The rest will be determined by your report. 
@@ -126,7 +127,7 @@ Log in to your SwaggerHub account at [https://app.SwaggerHub.com/login](https://
 
 <img src="/images/swhub1.png" alt="swagger" width="800"/>
 
-Then select version 3.0.0 and 'Template' 'Simple API' and press 'CREATE API'.
+Then select version 3.0.x and 'Template' 'Simple API' and press 'CREATE API'.
 
 <img src="/images/swgub2.png" alt="swagger" width="800"/>
 
@@ -137,7 +138,7 @@ You will get a OpenAPI template
 Name your API 'tutorial'.
 
 
-Replace the definition with the contents of [openAPI_1.yaml](openAPI_1.yaml).
+Replace the definition with the following: [openAPI_1.yaml](openAPI_1.yaml)
 
 You will notice that the editor at the bottom throws some errors:
 ```
@@ -153,8 +154,13 @@ You can find more about '$refs' here: [https://swagger.io/docs/specification/usi
 ## OpenAPI Exercises
 
 ### Define Objects
-Scroll down to the bottom of the page and create a new node called 'components', a node 
-'schemas' under that and a node called 'Student' under that. The code should look like this:
+Scroll down to the bottom of the page and create the following nodes:
+* components
+  * schemas
+    * Student
+    * GradeRecord
+
+The code should look like this:
 ```yaml
 components:
   schemas:
@@ -196,15 +202,13 @@ The GradeRecord properties to define are:
 
 ---
 
-> **Note**
-> 
-> Pay attention to which properties are required and which are not. This will affect the services' validation process.
+ **NOTE**
+
+ Note which properties are required and which are not. This will affect the services' validation process.
  To get more information on the 'required' see: https://swagger.io/docs/specification/data-models/data-types/ in the 
  'Required Properties' Section.
 
 ---
-
-
 
 It is useful to add 'example' fields in the properties. That way you API is easier to consume.
 
@@ -222,127 +226,92 @@ method. Under the '/student/{student_id}' path add the following:
       description: |
         delete a single student
       parameters:
-        - in: path
-          name: student_id
-          description: the uid
-          required: true
-          schema:
-            type: number
-            format: integer
-      responses:
-        …...
+        
 ```
-You will need to fill in the proper responses for 200, 400, and 404. More information about responses can be found here: https://swagger.io/docs/specification/describing-responses/
-Now that we have the definition completed we can try some mockup calls. Press 'SAVE' and select the POST method and press `Try it out` and then `Execute`. You should get an example of all the responses.
+## Generate Python Code
 
-# Generate the Server Stubs
+Now that we have the OpenAPI definitions we can create the server stub on python. Select 'Export'->'Server Stub'->
+'python-flask'
 
-Now that we have the OpenAPI definitions we can create the server stub on python. Select 'Export'->'Server Stub'-> 'python-flask' 
-![afbeelding](https://user-images.githubusercontent.com/46674631/216041475-96bae3b1-0b45-44b6-a0fb-aa0751d85c1f.png)
+<img src="/images/swgub6.png" alt="swagger" width="800"/>
 
-Save the 'python-flask-server-generated.zip' and unzip the archive. Open Pycharm and open the project by selecting 'File'->'Open' and selecting the unzipped folder.
-![afbeelding](https://user-images.githubusercontent.com/46674631/216041551-d4672c09-d0e5-4b35-bafc-dea9cc5dfef1.png)
+
+Save the 'python-flask-server-generated.zip' and unzip the archive. Open Pycharm and open the project.
+
+<img src="/images/pych1.png" alt="swagger" width="800"/>
+
 
 To create the virtual environment for the project go to 'File'->'Settings'->'Project'->'Python Interpreter' or ‘Pycharm'->'Preferences'->Project'->'Python Interpreter'. Select Python version 3.8 or later. Then select the gear icon to add a new environment:
-![afbeelding](https://user-images.githubusercontent.com/46674631/216041619-405b58e4-77cf-46bb-9ce4-cd738450b853.png)
+
+<img src="/images/pych2.png" alt="swagger" width="800"/>
 
 Select 'New environment' and press 'OK' 
 
-Add `tinydb==4.7.1` at the end of the requirements.txt file.
+Replace the 'requirements.txt' file with this [requirements.txt](requirements.txt)
 
-Open the '__main__.py' file and select from the top 'install requirements' to install the packages specified in the requirements.txt file
-![afbeelding](https://user-images.githubusercontent.com/46674631/216041840-f9aa83ad-77bc-47c1-891f-d88920ad299a.png)
+Open the 'requirements.txt' file and right click and select install all packages.
 
-Press Run to start the flask server: 
-![afbeelding](https://user-images.githubusercontent.com/46674631/216041908-daa57483-059f-4ab9-9398-9fdd6f2d4d8c.png)
+<img src="/images/pych3.png" alt="swagger" width="800"/>
 
-The UI API of your service will be in http://localhost:8080/tutorial/1.0.0/ui/. This is the same as the path defined in the OpenAPI definition in the section 'servers':
-```
-openapi: 3.0.0
+Open the file 'swagger_server/swagger/swagger.yaml' and in the section 'servers' you should have only one url and decryption.
+The servers section should look like this:
+```yaml
 servers:
-  # Added by API Auto Mocking Plugin
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/tutorial/1.0.0
+- url: https://virtserver.swaggerhub.com/tutorial/1.0.0
+  description: SwaggerHub API Auto Mocking
 ```
 
-You should see a similar page as the mockup in swaggerhub. Press 'Try it out': 
-![afbeelding](https://user-images.githubusercontent.com/46674631/216042134-a9311dd5-de51-48be-862c-26ef33084cd4.png)
+We need only one line so the service will always start http://localhost:8080/tutorial/1.0.0/ui/.
+
+
+Open the '__main__.py' file and press Run to start the flask server: 
+
+<img src="/images/pych4.png" alt="swagger" width="800"/>
+
+The UI API of your service will be in http://localhost:8080/tutorial/1.0.0/ui/. 
+
+On the UI select 'POST' and 'Try it out':
+
+<img src="/images/pych6.png" alt="swagger" width="800"/>
+
 
 The response body should be: "do some magic!"
 In Pycharm if you open the 'default_controller.py' file, you'll see that the method 'add_student' returns the string "do some magic!".
 
-
-
 ## Create Git Repository and Commit the Code
-Create a git repository. Go to the directory of the code and initialize the git repository and 
+Create a private git repository. 
+
+---
+
+ **IMPORTANT**
+
+ **Don't forget to make your repository public from the day of submission and onwards.**
+
+---
+
+Go to the directory of the code and initialize the git repository and 
 push the code:
 ```shell
 git init
 git add .
 git commit -m "first commit"
 git remote add origin <REPOSETORY_URL>
-git push -u origin master
+git push -u origin main
 ```
-More information on git can be found here: [https://phoenixnap.com/kb/how-to-use-git](https://phoenixnap.com/kb/how-to-use-git)
 
 ### Implement the logic
 
 In Pycharm create a package named 'service'. To do that right click on the 'swagger_server' package select 'New'->
 'Python Package' and enter the name 'service'
+
 <img src="/images/pych7.png" alt="swagger" width="800"/>
 
 Inside the service package create a new python file named 'student_service'
 
-In the student_service add the following code:
-[student_service.py](https://gitlab-fnwi.uva.nl/skoulou1/devops-material/-/raw/main/python/student_servcie.py)
-```python
-import os
-import tempfile
+Inside the service package create a new python file named 'student_service'
+In the student_service add the following code: [student_service.py](student_service.py)
 
-from tinydb import TinyDB, Query
-from tinydb.middlewares import CachingMiddleware
-from functools import reduce
-
-from swagger_server.models import Student
-
-db_dir_path = tempfile.gettempdir()
-db_file_path = os.path.join(db_dir_path, "students.json")
-student_db = TinyDB(db_file_path)
-
-
-def add(student=None):
-    queries = []
-    query = Query()
-    queries.append(query.first_name == student.first_name)
-    queries.append(query.last_name == student.last_name)
-    query = reduce(lambda a, b: a & b, queries)
-    res = student_db.search(query)
-    if res:
-        return 'already exists', 409
-
-    doc_id = student_db.insert(student.to_dict())
-    student.student_id = doc_id
-    return student.student_id
-
-
-def get_by_id(student_id=None, subject=None):
-    student = student_db.get(doc_id=int(student_id))
-    if not student:
-        return 'not found', 404
-    student['student_id'] = student_id
-    print(student)
-    return student
-
-
-def delete(student_id=None):
-    student = student_db.get(doc_id=int(student_id))
-    if not student:
-        return 'not found', 404
-    student_db.remove(doc_ids=[int(student_id)])
-    return student_id
-```
-
-Now you can add the corresponding methods in the 'default_controller.py'. To do that add in the top of the file:
+Now you can add the corresponding methods in the 'default_controller.py'. To do that on the top of the 'default_controller.py' add:
 
 ```python
 from swagger_server.service.student_service import *
@@ -388,7 +357,7 @@ Now the 'default_controller.py' just needs to call the service's methods.
 
 ---
 
-# Build Test and Publish Docker Image 
+# Build Test and Docker Image 
 
 You can now build your web service as a Docker image DockerHub. To do that open the Dockerfile 
 in the Pycharm project.
@@ -402,54 +371,82 @@ To:
 FROM python:3.8-alpine
 ```
 
-So the Dockerfile will look like this:
-[Dockerfile](https://gitlab-fnwi.uva.nl/skoulou1/devops-material/-/raw/main/docker/Dockerfile)
-```Dockerfile
-FROM python:3.8-alpine
+So the Dockerfile will look like this: [Dockerfile](Dockerfile)
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
 
-COPY requirements.txt /usr/src/app/
-    - name: Build docker
-      run: |
-        docker build . -t $IMAGE_ID
-    - name: run docker
-      run: |
-        docker run -d -e 8080:8080 -host=172.17.0.2 $IMAGE_NAME:latest && \
-          docker ps && sleep 5
-
-    - name: Run API Tests
-      id: run-newman
-      uses: anthonyvscode/newman-action@v1
-      with:
-        collection: postman/postman_collection.json
-        environment: postman/postman_environment.json
-        reporters: cli
-        iterationCount: 3
-
-    - name: Output summary to console
-      run: echo ${{ steps.run-newman.outputs.summary }}
-
-    - name: Login to Container Registry
-      uses: docker/login-action@v1
-      with:
-        
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}
-
-    - name: Push image to docker hub Container Registry
-      run: |
-        docker push $IMAGE_ID
+Open a new terminal in the location of the Dockerfile and type:
+```
+docker build --tag <REPO_NAME>/student_service .
 ```
 
+If the above command is not working you may need to use sudo.
+Now test the image:
+```
+docker run -it -p 8080:8080 <REPO_NAME>/student_service
+```
+
+---
+
+ **NOTE**
+
+ Don't forget to stop the server from PyCharm otherwise you'll get an error:
+ ```
+ shell docker: Error response from daemon: driver failed programming external connectivity on endpoint trusting_joliot (8cbc8523e15eb68f343d048ab59a9e6d): Error starting userland proxy: listen tcp4 0.0.0.0:8080: bind: address already in use. ERRO[0001] error waiting for the container: context canceled
+```
+
+---
+
+
 ## MongoDB Integration (Optional)
+
+
+The code provided above uses an internal database called TinyDB. Change the code so that your service saves data in an mongoDB. 
+This includes configuration files for the database endpoint database names the Dockerfile itself etc.
+For testing your code locally use this file: [docker-compose.yaml](docker-compose.yaml). Make sure you replace the image with your own.
+
+---
+
+ **NOTE**
+
+ The docker-compose.yaml file above will be also used to run the postman tests during grading.  
+ If you need to install Docker Compose you can follow the instructions here: https://docs.docker.com/compose/install/.
+
+---
+
+## Write Tests
+
+Before writing the tests in Github you need to create a token in Docker hub. To do that follow these instructions: https://docs.docker.com/docker-hub/access-tokens/
+Next you need to add your Docker hub and token to your Github project secrets.
+To create secrets follow these instructions https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository.
+
+You need to create two secrets, one named REGISTRY_USERNAME and one REGISTRY_PASSWORD.
+Therefore, you need to run the above instructions twice. First time the name of the secret will be REGISTRY_USERNAME and second will be REGISTRY_PASSWORD.
+
+In your code directory create a new folder named 'postman'. In the new 'postman' folder add these files: 
+* [collection.json](collection.json)
+* [environment.json](environment.json)
+
+Make sure your code in the Git repository is up-to-date. Go to the repository and page create a new file with 
+'Add file'->'Create new file'. On the top define the path of your file.
+
+```
+.github/workflows/main.yml
+```
+
+
+Set the contents of your file as: [main.yml](main.yml)
+
+Commit and push your changes to GitHub. After that, any time you commit new code to your repository your code will be 
+automatically tested and the Docker container will be build and pushed in DockerHub. 
+
+To check the tests go to your Github repository and clik on 'Actions'. After the action is successfully completed the build 
+container should be in your Dockerhub registry. 
 
 # Deploy Web Service on Kubernetes (MicroK8s)
 
 ## Install MicroK8s 
 
-If you have access to a Kubernetes cluster you may skip this step
+[//]: # (If you have access to a Kubernetes cluster you may skip this step)
 
 You can find MicroK8s installation instructions: [https://MicroK8s.io/](https://MicroK8s.io/)
 
@@ -458,74 +455,83 @@ VirtualBox: [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.o
 
 After you complete the installation make sure you start MicroK8s and enable DNS
 ```shell
-MicroK8s start
-MicroK8s enable dns
+microk8s start
+microk8s enable dns
 ```
+
+---
+
+ **NOTE**
+
+ In linux you may need to use these commands with sudo 
+
+---
+
 
 ## Test K8s Cluster
 
 This is a basic Kubernetes deployment of Nginx. On the master node create a Nginx deployment:
 ```shell
-MicroK8s kubectl create deployment nginx --image=nginx
+microk8s kubectl create deployment nginx --image=nginx
 ```
 
 You may check your Nginx deployment by typing:
 ```shell
-MicroK8s kubectl get all
+microk8s kubectl get all
 ```
 
 The output should look like this:
 ```shell
 NAME                         READY   STATUS              RESTARTS   AGE
-pod/nginx-6799fc88d8-wttct   0/1     ContainerCreating   0          6s
+pod/nginx-748c667d99-zdxh6   0/1     ContainerCreating   0          13s
 
-NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   134d
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   2m54s
 
 NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/nginx   0/1     1            0           7s
+deployment.apps/nginx   0/1     1            0           35s
 
 NAME                               DESIRED   CURRENT   READY   AGE
-replicaset.apps/nginx-6799fc88d8   1         1         0       7s
+replicaset.apps/nginx-748c667d99   1         1         0       13s
 ```
 You will notice in the first line 'ContainerCreating'. This means that the K8s cluster is downloading and starting the 
 Nginx container. After some minutes if you run again:
 ```shell
-MicroK8s kubectl get all
+microk8s kubectl get all
 ```
 
 The output should look like this:
 ```shell
 NAME                         READY   STATUS    RESTARTS   AGE
-pod/nginx-6799fc88d8-wttct   1/1     Running   0          39s
+pod/nginx-748c667d99-zdxh6   1/1     Running   0          43s
 
-NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   134d
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   3m24s
 
 NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/nginx   1/1     1            1           40s
+deployment.apps/nginx   1/1     1            1           65s
 
 NAME                               DESIRED   CURRENT   READY   AGE
-replicaset.apps/nginx-6799fc88d8   1         1         1       40s
+replicaset.apps/nginx-748c667d99   1         1         1       43s
 ```
 
 At this point Nginx is running on the K8s cluster, however it is only accessible from within the cluster. To expose 
 Nginx to the outside world we should type: 
 ```shell
-MicroK8s kubectl create service nodeport nginx --tcp=80:80
+microk8s kubectl create service nodeport nginx --tcp=80:80
 ```
 
 To check your Nginx deployment type:
 ```shell
-MicroK8s kubectl get all
+microk8s kubectl get all
 ```
 
 You should see the among others the line:
 ```shell
-service/nginx        NodePort    10.98.203.181   <none>        80:30155/TCP   6s
+service/nginx        NodePort    10.152.183.82   <none>        80:31119/TCP   9s
 ```
 
-This means that port 80 is mapped on port 30155 of each node in the K8s cluster. 
+This means that port 80 is mapped on port 31119 of each node in the K8s cluster. 
 
 ---
 
@@ -540,64 +546,14 @@ This means that port 80 is mapped on port 30155 of each node in the K8s cluster.
 
 You may now delete the Nginx service by using:
 ```shell
-MicroK8s kubectl delete service/nginx
+microk8s kubectl delete service/nginx
 ```
 
 ## Deploy Web Service on K8s Cluster
 
-To deploy a RESTful Web Service on the K8s Cluster log in the K8s Cluster create a folder named
+To deploy a RESTful Web Service on the K8s Cluster create a folder named
 'service' and add this file in the folder:
-[student_service.yaml](https://gitlab-fnwi.uva.nl/skoulou1/devops-material/-/raw/main/k8s/student_service.yaml)
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    io.kompose.service: service
-  name: service
-spec:
-  type: NodePort
-  ports:
-  - port: 8080
-    protocol: TCP
-    name: http
-  selector:
-    io.kompose.service: service
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.16.0 (0c01309)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: service
-  name: service
-spec:
-  selector:
-    matchLabels:
-      io.kompose.service: service
-  replicas: 1
-  template:
-    metadata:
-      creationTimestamp: null
-      labels:
-        io.kompose.service: service
-    spec:
-      containers:
-      - env:
-        - name: MONGO_URI
-          value: mongodb://mongo:27017
-        image: IMAGE_NAME
-        name: service
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-        resources: {}
-      restartPolicy: Always
-status: {}
-```
+[student_service.yaml](student_service.yaml)
 
 Open 'student_service.yaml' and replace the line:
 ```yaml
@@ -608,58 +564,16 @@ with the name of your image as typed in the docker push command.
 
 If you chose to integrate with an extremal database you will need to add the Deployment and 
 service for MongoDB:
-[mongodb.yaml](https://gitlab-fnwi.uva.nl/skoulou1/devops-material/-/raw/main/k8s/mongodb.yaml)
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    kompose.cmd: kompose --file docker-compose.yml convert
-    kompose.version: 1.16.0 (0c01309)
-  labels:
-    io.kompose.service: mongo
-  name: mongo
-spec:
-  ports:
-  - name: "27017"
-    port: 27017
-    targetPort: 27017
-  selector:
-    io.kompose.service: mongo
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.16.0 (0c01309)
-  labels:
-    io.kompose.service: mongo
-  name: mongo
-spec:
-  selector:
-    matchLabels:
-      io.kompose.service: mongo
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        io.kompose.service: mongo
-    spec:
-      containers:
-      - image: mongo:4
-        name: mongo
-      restartPolicy: Always
-```
+[mongodb.yaml](mongodb.yaml)
 
 To create all the deployments and services type in the K8s folder:
 ```shell
-MicroK8s kubectl apply -f .
+microk8s kubectl apply -f .
 ```
 
 This should create the my-temp-service deployments and services. To see what is running on the cluster type:
 ```shell
-MicroK8s kubectl get all
+microk8s kubectl get all
 ```
 You should see something like this:
 ```shell
