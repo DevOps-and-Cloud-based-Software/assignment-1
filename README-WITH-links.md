@@ -43,7 +43,7 @@ At the end of this assignment you are expected to submit the following:
  * Name of the published docker(s) in [https://hub.docker.com/](https://hub.docker.com/). Must be able to perform (docker pull <REPO/NAME>)
  * Git repository link
  * If you choose the optional exercise task i.e. the MongoDB integration submit **only** the code for connecting to MongoDB. 
- * If you choose the optional exercise task i.e. the MongoDB integration the testing will be done using the '[docker-compose.yaml](docker-compose.yaml)'
+ * If you choose the optional exercise task i.e. the MongoDB integration the testing will be done using the '[https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/docker-compose.yaml](docker-compose.yaml)'
 
  **Do not add your code in Canvas or in your report.**
 
@@ -138,7 +138,7 @@ You will get a OpenAPI template
 Name your API 'tutorial'.
 
 
-Replace the definition with the following: [openAPI_1.yaml](openAPI_1.yaml)
+Replace the definition with the following: [https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/openAPI_1.yaml](openAPI_1.yaml)
 
 You will notice that the editor at the bottom throws some errors:
 ```
@@ -260,7 +260,7 @@ To create the virtual environment for the project go to 'File'->'Settings'->'Pro
 
 Select 'New environment' and press 'OK' 
 
-Replace the 'requirements.txt' file with this [requirements.txt](requirements.txt)
+Replace the 'requirements.txt' file with this https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/requirements.txt](requirements.txt)
 
 Open the 'requirements.txt' file and right click and select install all packages.
 
@@ -322,7 +322,7 @@ In Pycharm create a package named 'service'. To do that right click on the 'swag
 Inside the service package create a new python file named 'student_service'
 
 Inside the service package create a new python file named 'student_service'
-In the student_service add the following code: [student_service.py](student_service.py)
+In the student_service add the following code: [https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/student_service.py](student_service.py)
 
 Now you can add the corresponding methods in the 'default_controller.py'. To do that on the top of the 'default_controller.py' add:
 
@@ -384,7 +384,7 @@ To:
 FROM python:3.8-alpine
 ```
 
-So the Dockerfile will look like this: [Dockerfile](Dockerfile)
+So the Dockerfile will look like this: [https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/Dockerfile](Dockerfile)
 
 
 Open a new terminal in the location of the Dockerfile and type:
@@ -415,7 +415,7 @@ docker run -it -p 8080:8080 <REPO_NAME>/student_service
 
 The code provided above uses an internal database called TinyDB. Change the code so that your service saves data in an mongoDB. 
 This includes configuration files for the database endpoint database names the Dockerfile itself etc.
-For testing your code locally use this file: [docker-compose.yaml](docker-compose.yaml). Make sure you replace the image with your own.
+For testing your code locally use this file: [https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/docker-compose.yaml](docker-compose.yaml). Make sure you replace the image with your own.
 
 ---
 
@@ -436,8 +436,8 @@ You need to create two secrets, one named REGISTRY_USERNAME and one REGISTRY_PAS
 Therefore, you need to run the above instructions twice. First time the name of the secret will be REGISTRY_USERNAME and second will be REGISTRY_PASSWORD.
 
 In your code directory create a new folder named 'postman'. In the new 'postman' folder add these files: 
-* [collection.json](collection.json)
-* [environment.json](environment.json)
+* [https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/collection.json](collection.json)
+* [https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/environment.json](environment.json)
 
 Make sure your code in the Git repository is up-to-date. Go to the repository and page create a new file with 
 'Add file'->'Create new file'. On the top define the path of your file.
@@ -447,7 +447,7 @@ Make sure your code in the Git repository is up-to-date. Go to the repository an
 ```
 
 
-Set the contents of your file as: [main.yml](main.yml)
+Set the contents of your file as: [https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/main.yml](main.yml)
 
 Commit and push your changes to GitHub. After that, any time you commit new code to your repository your code will be 
 automatically tested and the Docker container will be build and pushed in DockerHub. 
@@ -457,9 +457,7 @@ container should be in your Dockerhub registry.
 
 # Deploy Web Service on Kubernetes (MicroK8s)
 
-## Install MicroK8s 
-
-[//]: # (If you have access to a Kubernetes cluster you may skip this step)
+## Install MicroK8s
 
 You can find MicroK8s installation instructions: [https://MicroK8s.io/](https://MicroK8s.io/)
 
@@ -566,7 +564,7 @@ microk8s kubectl delete service/nginx
 
 To deploy a RESTful Web Service on the K8s Cluster create a folder named
 'service' and add this file in the folder:
-[student_service.yaml](student_service.yaml)
+[https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/student_service.yaml](student_service.yaml)
 
 Open 'student_service.yaml' and replace the line:
 ```yaml
@@ -577,7 +575,7 @@ with the name of your image as typed in the docker push command.
 
 If you chose to integrate with an extremal database you will need to add the Deployment and 
 service for MongoDB:
-[mongodb.yaml](mongodb.yaml)
+https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/mongodb.yaml](mongodb.yaml)
 
 To create all the deployments and services type in the K8s folder:
 ```shell
