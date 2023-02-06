@@ -567,6 +567,7 @@ To deploy a RESTful Web Service on the K8s Cluster create a folder named
 [student_service.yaml](https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/student_service.yaml)
 
 Open 'student_service.yaml' and replace the line:
+Open 'student_service.yaml' and replace the line:
 ```yaml
 image: IMAGE_NAME
 ```
