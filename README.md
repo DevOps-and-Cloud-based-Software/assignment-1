@@ -142,8 +142,7 @@ Replace the definition with the following: [openAPI_1.yaml](openAPI_1.yaml)
 
 You will notice that the editor at the bottom throws some errors:
 ```
-Errors (3)
-Could not resolve reference: #/components/schemas/Student
+Errors (2)
 $refs must reference a valid location in the document
 $refs must reference a valid location in the document
 ```
