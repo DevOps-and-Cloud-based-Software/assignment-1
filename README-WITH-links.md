@@ -246,17 +246,17 @@ You will need to fill in the proper responses for 200, 400, and 404. More inform
 Now that we have the OpenAPI definitions we can create the server stub on python. Select 'Export'->'Server Stub'->
 'python-flask'
 
-<img src="/images/swgub6.png" alt="swagger" width="800"/>
+<img src="https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/swgub6.png" alt="swagger" width="800"/>
 
 
 Save the 'python-flask-server-generated.zip' and unzip the archive. Open Pycharm and open the project.
 
-<img src="/images/pych1.png" alt="swagger" width="800"/>
+<img src="https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/pych1.png" alt="swagger" width="800"/>
 
 
 To create the virtual environment for the project go to 'File'->'Settings'->'Project'->'Python Interpreter' or ‘Pycharm'->'Preferences'->Project'->'Python Interpreter'. Select Python version 3.8 or later. Then select the gear icon to add a new environment:
 
-<img src="/images/pych2.png" alt="swagger" width="800"/>
+<img src="https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/pych2.png" alt="swagger" width="800"/>
 
 Select 'New environment' and press 'OK' 
 
@@ -264,7 +264,7 @@ Replace the 'requirements.txt' file with this https://raw.githubusercontent.com/
 
 Open the 'requirements.txt' file and right click and select install all packages.
 
-<img src="/images/pych3.png" alt="swagger" width="800"/>
+<img src="https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/pych3.png" alt="swagger" width="800"/>
 
 Open the file 'swagger_server/swagger/swagger.yaml' and in the section 'servers' you should have only one url and decryption.
 The servers section should look like this:
@@ -279,13 +279,13 @@ We need only one line so the service will always start http://localhost:8080/tut
 
 Open the '__main__.py' file and press Run to start the flask server: 
 
-<img src="/images/pych4.png" alt="swagger" width="800"/>
+<img src="https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/pych4.png" alt="swagger" width="800"/>
 
 The UI API of your service will be in http://localhost:8080/tutorial/1.0.0/ui/. 
 
 On the UI select 'POST' and 'Try it out':
 
-<img src="/images/pych6.png" alt="swagger" width="800"/>
+<img src="https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/pych6.png" alt="swagger" width="800"/>
 
 
 The response body should be: "do some magic!"
@@ -317,7 +317,7 @@ git push -u origin main
 In Pycharm create a package named 'service'. To do that right click on the 'swagger_server' package select 'New'->
 'Python Package' and enter the name 'service'
 
-<img src="/images/pych7.png" alt="swagger" width="800"/>
+<img src="https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/main/pych7.png" alt="swagger" width="800"/>
 
 Inside the service package create a new python file named 'student_service'
 
