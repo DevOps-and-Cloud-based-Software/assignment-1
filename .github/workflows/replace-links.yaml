@@ -1,0 +1,16 @@
+name: replace links
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        run: |
+          cp README.md README-WITH-links.md 
+
+      - name: Find and Replace
+        uses: nguyenvanuyn96/str-find-and-replace-action@master
+        with:
+          find: "Docker"
+          replace: "Singularity"
+          include: "README-WITH-links.md"
