@@ -1,0 +1,27 @@
+name: Build and push container
+on:
+  push:
+    tags:
+      - '*'
+
+env:
+  GITHUB_TOKEN: ${{ github.token }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish Document
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish PDF Document
+        uses: shrink/actions-document-publish@v1
+        id: publish-document
+        with:
+          sources: 'README.md'
+      - name: Upload Document
+        uses: actions/upload-artifact@v2
+        id: upload-document
+        with:
+          name: 'week1Lab.pdf'
+          path: ${{ steps.publish-document.outputs.pdf }}
