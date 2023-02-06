@@ -221,13 +221,27 @@ The API definition at the moment only has 'GET' and 'POST' methods. We will add 
 method. Under the '/student/{student_id}' path add the following:
 ```yaml
     delete:
-      summary: Delete a student
-      operationId: deleteStudent
+      summary: deletes a student
       description: |
-        delete a single student
+        delete a single student 
+      operationId: delete_student
       parameters:
-        
+      - name: student_id
+        in: path
+        description: the uid
+        required: true
+        schema:
+          type: number
+          format: integer
+      responses:
+        "200":
+          
+        "400":
+          
+        "404":
+          
 ```
+You will need to fill in the proper responses for 200, 400, and 404. More information about responses can be found here: https://swagger.io/docs/specification/describing-responses/
 ## Generate Python Code
 
 Now that we have the OpenAPI definitions we can create the server stub on python. Select 'Export'->'Server Stub'->
