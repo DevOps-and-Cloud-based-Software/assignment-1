@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        name: copy README
         run: |
           cp README.md README-WITH-links.md 
 
