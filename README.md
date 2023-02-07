@@ -1,7 +1,5 @@
 % RESTful services, Docker and Kubernetes
 
-https://github.com/DevOps-and-Cloud-based-Software/week1/blob/main/README.md
-
 # Introduction
 
   In this tutorial we will use OpenAPI to define a RESTful web service and Python to implement it.  
@@ -40,10 +38,10 @@ At the end of this assignment you are expected to submit the following:
  In order to be given a grade you must submit the following:
 
  * Written report (see [Reporting](#reporting) for details)
- * Name of the published docker(s) in [https://hub.docker.com/](https://hub.docker.com/). Must be able to perform (docker pull <REPO/NAME>)
+ * Name of the published docker(s) in https://hub.docker.com/ . Must be able to perform (docker pull <REPO/NAME>)
  * Git repository link
  * If you choose the optional exercise task i.e. the MongoDB integration submit **only** the code for connecting to MongoDB. 
- * If you choose the optional exercise task i.e. the MongoDB integration the testing will be done using the '[docker-compose.yaml](docker-compose.yaml)'
+ * If you choose the optional exercise task i.e. the MongoDB integration the testing will be done using the '[docker-compose.yaml](sources/docker-compose.yaml)'
 
  **Do not add your code in Canvas or in your report.**
 
@@ -63,7 +61,7 @@ At the end of this assignment you are expected to submit the following:
 ## OpenAPI and Swagger
 Swagger is an implementation of OpenAPI. Swagger contains a tool that helps developers design, build, document, and consume RESTful Web services. 
 Applications implemented based on OpenAPI interface files can automatically generate documentation of methods, parameters and models. This helps keep the documentation, client libraries, and source code in sync.
-You can find a short technical explanation here [https://www.youtube.com/watch?v=pRS9LRBgjYg](https://www.youtube.com/watch?v=pRS9LRBgjYg)
+You can find a short technical explanation here https://www.youtube.com/watch?v=pRS9LRBgjYg
 
 ## Git
 Git is an open source distributed version control system. Version control helps keep track of changes in a project and allows for collaboration between many developers.
@@ -94,22 +92,21 @@ If you don’t have an account already follow these instructions: https://hub.do
 If you have GitHub Account you may go to https://app.SwaggerHub.com/login and select 'Log In with GitHub'. Alternatively, you can select to sign up.
 
 ## Install Docker and Docker Compose on your Local machine
-You can find instructions on how to install Docker here: https://docs.docker.com/get-docker/.
-You may also find a detailed tutorial on Docker here: [https://docker-curriculum.com/](https://docker-curriculum.com/).
+You can find instructions on how to install Docker here: https://docs.docker.com/get-docker/
+You may also find a detailed tutorial on Docker here: https://docker-curriculum.com/
 
 To test if your installation is running you may test docker by typing:
 ```shell
 docker run hello-world
 ```
 You can find instructions on how to install Docker Compose here: 
-[https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/).
+https://docs.docker.com/compose/install/ 
 
 ## Install Pycharm 
 In this tutorial we will use the Pycharm Integrated Development Environment (IDE). If you have a 
 preferred IDE you are free to use it.
 
-You can find instructions on how to install Pycharm here: 
-[https://www.jetbrains.com/pycharm/download/](https://www.jetbrains.com/pycharm/download/)
+You can find instructions on how to install Pycharm here: https://www.jetbrains.com/pycharm/download/
 
 If you are using snap you can type:
 ```shell
@@ -121,9 +118,9 @@ https://www.jetbrains.com/help/pycharm/creating-and-running-your-first-python-pr
 # Write OpenAPI Definition
 In this section we will define a web service interface that will support the Create, Read, Update, Delete (CRUD) pattern 
 for manipulating resources using OpenAPI. To get a more in-depth understanding of Swagger and OpenAPI you may follow this tutorial 
-[https://idratherbewriting.com/learnapidoc/openapi_tutorial.html](https://idratherbewriting.com/learnapidoc/openapi_tutorial.html)
+https://idratherbewriting.com/learnapidoc/openapi_tutorial.html
 
-Log in to your SwaggerHub account at [https://app.SwaggerHub.com/login](https://app.SwaggerHub.com/login) and select 'Create New' -> 'Create New API'
+Log in to your SwaggerHub account at https://app.SwaggerHub.com/login and select 'Create New' -> 'Create New API'
 
 <img src="/images/swhub1.png" alt="swagger" width="800"/>
 
@@ -138,7 +135,7 @@ You will get a OpenAPI template
 Name your API 'tutorial'.
 
 
-Replace the definition with the following: [openAPI_1.yaml](openAPI_1.yaml)
+Replace the definition with the following: [openAPI_1.yaml](sources/openAPI_1.yaml)
 
 You will notice that the editor at the bottom throws some errors:
 ```
@@ -148,7 +145,7 @@ $refs must reference a valid location in the document
 ```
 
 Effectively what is said here is that the "#/components/schemas/Student" is not defined. 
-You can find more about '$refs' here: [https://swagger.io/docs/specification/using-ref/](https://swagger.io/docs/specification/using-ref/)
+You can find more about '$refs' here: https://swagger.io/docs/specification/using-ref/
 
 ## OpenAPI Exercises
 
@@ -211,8 +208,8 @@ The GradeRecord properties to define are:
 
 It is useful to add 'example' fields in the properties. That way you API is easier to consume.
 
-You can find details about the 'example' field here: [https://swagger.io/docs/specification/adding-examples/](https://swagger.io/docs/specification/adding-examples/)
-You can find details about data models here: [https://swagger.io/docs/specification/data-models/](https://swagger.io/docs/specification/data-models/)
+You can find details about the 'example' field here: https://swagger.io/docs/specification/adding-examples/
+You can find details about data models here: https://swagger.io/docs/specification/data-models/
 
 ### Add Delete method
 
@@ -260,7 +257,7 @@ To create the virtual environment for the project go to 'File'->'Settings'->'Pro
 
 Select 'New environment' and press 'OK' 
 
-Replace the 'requirements.txt' file with this [requirements.txt](requirements.txt)
+Replace the 'requirements.txt' file with this [requirements.txt](sources/requirements.txt)
 
 Open the 'requirements.txt' file and right click and select install all packages.
 
@@ -274,14 +271,14 @@ servers:
   description: SwaggerHub API Auto Mocking
 ```
 
-We need only one line so the service will always start http://localhost:8080/tutorial/1.0.0/ui/.
+We need only one line so the service will always start http://localhost:8080/tutorial/1.0.0/ui/ .
 
 
 Open the '__main__.py' file and press Run to start the flask server: 
 
 <img src="/images/pych4.png" alt="swagger" width="800"/>
 
-The UI API of your service will be in http://localhost:8080/tutorial/1.0.0/ui/. 
+The UI API of your service will be in http://localhost:8080/tutorial/1.0.0/ui/ .  
 
 On the UI select 'POST' and 'Try it out':
 
@@ -317,12 +314,12 @@ git push -u origin main
 In Pycharm create a package named 'service'. To do that right click on the 'swagger_server' package select 'New'->
 'Python Package' and enter the name 'service'
 
-<img src="/images/pych7.png" alt="swagger" width="800"/>
+<img src="/images/pych7.png" alt="swagger" width="300"/>
 
 Inside the service package create a new python file named 'student_service'
 
 Inside the service package create a new python file named 'student_service'
-In the student_service add the following code: [student_service.py](student_service.py)
+In the student_service add the following code: [student_service.py](sources/student_service.py)
 
 Now you can add the corresponding methods in the 'default_controller.py'. To do that on the top of the 'default_controller.py' add:
 
@@ -359,7 +356,7 @@ This is why we should create a new package in the code called 'service' and a py
 'student_service.py'. In this code template we use a simple file-based database to store and 
 query data called TinyDB. 
 
-More information on TinyDB can be found here: [https://tinydb.readthedocs.io/en/latest/getting-started.html](https://tinydb.readthedocs.io/en/latest/getting-started.html)
+More information on TinyDB can be found here: https://tinydb.readthedocs.io/en/latest/getting-started.html
 Now the 'default_controller.py' just needs to call the service's methods. 
 
 ---
@@ -384,7 +381,7 @@ To:
 FROM python:3.8-alpine
 ```
 
-So the Dockerfile will look like this: [Dockerfile](Dockerfile)
+So the Dockerfile will look like this: [Dockerfile](sources/Dockerfile)
 
 
 Open a new terminal in the location of the Dockerfile and type:
@@ -415,14 +412,14 @@ docker run -it -p 8080:8080 <REPO_NAME>/student_service
 
 The code provided above uses an internal database called TinyDB. Change the code so that your service saves data in an mongoDB. 
 This includes configuration files for the database endpoint database names the Dockerfile itself etc.
-For testing your code locally use this file: [docker-compose.yaml](docker-compose.yaml). Make sure you replace the image with your own.
+For testing your code locally use this file: [docker-compose.yaml](sources/docker-compose.yaml). Make sure you replace the image with your own.
 
 ---
 
  **NOTE**
 
  The docker-compose.yaml file above will be also used to run the postman tests during grading.  
- If you need to install Docker Compose you can follow the instructions here: https://docs.docker.com/compose/install/.
+ If you need to install Docker Compose you can follow the instructions here: https://docs.docker.com/compose/install/ .
 
 ---
 
@@ -436,8 +433,8 @@ You need to create two secrets, one named REGISTRY_USERNAME and one REGISTRY_PAS
 Therefore, you need to run the above instructions twice. First time the name of the secret will be REGISTRY_USERNAME and second will be REGISTRY_PASSWORD.
 
 In your code directory create a new folder named 'postman'. In the new 'postman' folder add these files: 
-* [collection.json](collection.json)
-* [environment.json](environment.json)
+* [collection.json](sources/collection.json)
+* [environment.json](sources/environment.json)
 
 Make sure your code in the Git repository is up-to-date. Go to the repository and page create a new file with 
 'Add file'->'Create new file'. On the top define the path of your file.
@@ -447,7 +444,7 @@ Make sure your code in the Git repository is up-to-date. Go to the repository an
 ```
 
 
-Set the contents of your file as: [main.yml](main.yml)
+Set the contents of your file as: [main.yml](sources/main.yml)
 
 Commit and push your changes to GitHub. After that, any time you commit new code to your repository your code will be 
 automatically tested and the Docker container will be build and pushed in DockerHub. 
@@ -459,12 +456,10 @@ container should be in your Dockerhub registry.
 
 ## Install MicroK8s 
 
-[//]: # (If you have access to a Kubernetes cluster you may skip this step)
-
-You can find MicroK8s installation instructions: [https://MicroK8s.io/](https://MicroK8s.io/)
+You can find MicroK8s installation instructions: https://MicroK8s.io/
 
 If you have access to a cloud VM you may install MicroK8s there. Alternatively you may also use 
-VirtualBox: [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
+VirtualBox: https://www.virtualbox.org/wiki/Downloads
 
 After you complete the installation make sure you start MicroK8s and enable DNS
 ```shell
@@ -551,7 +546,7 @@ This means that port 80 is mapped on port 31119 of each node in the K8s cluster.
  **NOTE**
 
  The mapped port will be different on your deployment. Now we can access Nginx from 
- http://IP:NODE_PORT.
+ http://IP:NODE_PORT .
 
 ---
 
@@ -566,7 +561,7 @@ microk8s kubectl delete service/nginx
 
 To deploy a RESTful Web Service on the K8s Cluster create a folder named
 'service' and add this file in the folder:
-[student_service.yaml](student_service.yaml)
+[student_service.yaml](sources/student_service.yaml)
 
 Open 'student_service.yaml' and replace the line:
 ```yaml
@@ -577,7 +572,7 @@ with the name of your image as typed in the docker push command.
 
 If you chose to integrate with an extremal database you will need to add the Deployment and 
 service for MongoDB:
-[mongodb.yaml](mongodb.yaml)
+[mongodb.yaml](sources/mongodb.yaml)
 
 To create all the deployments and services type in the K8s folder:
 ```shell
