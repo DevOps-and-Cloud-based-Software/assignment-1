@@ -261,6 +261,21 @@ Replace the 'requirements.txt' file with this [requirements.txt](sources/require
 
 Open the 'requirements.txt' file and right click and select install all packages.
 
+
+---
+
+ **NOTE**
+
+ If the installation of the requirements fails use from command line:
+ ```
+ pip install -r requirements.txt
+ ```
+ 
+ This may happen because Pycharm sometimes uses conda channel to search for packages.
+
+---
+
+
 <img src="/images/pych3.png" alt="swagger" width="800"/>
 
 Open the file 'swagger_server/swagger/swagger.yaml' and in the section 'servers' you should have only one url and decryption.
@@ -287,6 +302,16 @@ On the UI select 'POST' and 'Try it out':
 
 The response body should be: "do some magic!"
 In Pycharm if you open the 'default_controller.py' file, you'll see that the method 'add_student' returns the string "do some magic!".
+
+
+---
+
+ **NOTE**
+
+ If you make any changes to the code you'll need to restart the flask server. 
+
+---
+
 
 ## Create Git Repository and Commit the Code
 Create a private git repository. 
@@ -452,6 +477,20 @@ automatically tested and the Docker container will be build and pushed in Docker
 To check the tests go to your Github repository and clik on 'Actions'. After the action is successfully completed the build 
 container should be in your Dockerhub registry. 
 
+
+---
+
+ **NOTE**
+
+ Remember to fill in the REPO_NAME in main.yml, which should be your docker hub **username**, NOT your docker hub 
+ repository name.
+ 
+The REGISTRY_USERNAME is your **username** for docker hub, NOT your docker hub repository name.
+
+---
+
+
+
 # Deploy Web Service on Kubernetes (MicroK8s)
 
 ## Install MicroK8s 
@@ -472,6 +511,18 @@ microk8s enable dns
  **NOTE**
 
  In linux you may need to use these commands with sudo 
+ 
+ If you get en error:
+ ```
+ sudo: microk8s: command not found
+ ```
+ 
+ /snap/bin is probably not in your path.  Either use: \
+ 
+ ```
+ sudo /snap/bin/microk8s start
+ ```
+ or add /snap/bin to you PATH.
 
 ---
 
