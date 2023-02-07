@@ -1,7 +1,7 @@
 name: Build and push container
 
 on:
-  [pull_request,push]
+  [push]
 
 env:
   GITHUB_TOKEN: ${{ github.token }}
@@ -25,7 +25,13 @@ jobs:
 
       - name: Check links
         run: |
-          cat README_WITH_LINKS.md 
+          grep -o "http[^ ]*" README_WITH_LINKS.md | sed '/.*localhost/d' | sed '/.*NODE_PORT/d' > links
+          
+
+      - name: Check URLs
+        uses: paramt/url-checker@master
+        with:
+          files: "README_WITH_LINKS.md"
           
 
       - name: Publish PDF Document

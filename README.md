@@ -1,7 +1,5 @@
 % RESTful services, Docker and Kubernetes
 
-https://github.com/DevOps-and-Cloud-based-Software/week1/blob/main/README.md
-
 # Introduction
 
   In this tutorial we will use OpenAPI to define a RESTful web service and Python to implement it.  
@@ -40,7 +38,7 @@ At the end of this assignment you are expected to submit the following:
  In order to be given a grade you must submit the following:
 
  * Written report (see [Reporting](#reporting) for details)
- * Name of the published docker(s) in https://hub.docker.com/. Must be able to perform (docker pull <REPO/NAME>)
+ * Name of the published docker(s) in https://hub.docker.com/ . Must be able to perform (docker pull <REPO/NAME>)
  * Git repository link
  * If you choose the optional exercise task i.e. the MongoDB integration submit **only** the code for connecting to MongoDB. 
  * If you choose the optional exercise task i.e. the MongoDB integration the testing will be done using the '[docker-compose.yaml](sources/docker-compose.yaml)'
@@ -63,7 +61,7 @@ At the end of this assignment you are expected to submit the following:
 ## OpenAPI and Swagger
 Swagger is an implementation of OpenAPI. Swagger contains a tool that helps developers design, build, document, and consume RESTful Web services. 
 Applications implemented based on OpenAPI interface files can automatically generate documentation of methods, parameters and models. This helps keep the documentation, client libraries, and source code in sync.
-You can find a short technical explanation here [https://www.youtube.com/watch?v=pRS9LRBgjYg](https://www.youtube.com/watch?v=pRS9LRBgjYg)
+You can find a short technical explanation here https://www.youtube.com/watch?v=pRS9LRBgjYg
 
 ## Git
 Git is an open source distributed version control system. Version control helps keep track of changes in a project and allows for collaboration between many developers.
@@ -94,15 +92,15 @@ If you don’t have an account already follow these instructions: https://hub.do
 If you have GitHub Account you may go to https://app.SwaggerHub.com/login and select 'Log In with GitHub'. Alternatively, you can select to sign up.
 
 ## Install Docker and Docker Compose on your Local machine
-You can find instructions on how to install Docker here: https://docs.docker.com/get-docker/.
-You may also find a detailed tutorial on Docker here: [https://docker-curriculum.com/](https://docker-curriculum.com/).
+You can find instructions on how to install Docker here: https://docs.docker.com/get-docker/
+You may also find a detailed tutorial on Docker here: https://docker-curriculum.com/
 
 To test if your installation is running you may test docker by typing:
 ```shell
 docker run hello-world
 ```
 You can find instructions on how to install Docker Compose here: 
-[https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/).
+https://docs.docker.com/compose/install/ 
 
 ## Install Pycharm 
 In this tutorial we will use the Pycharm Integrated Development Environment (IDE). If you have a 
@@ -122,7 +120,7 @@ In this section we will define a web service interface that will support the Cre
 for manipulating resources using OpenAPI. To get a more in-depth understanding of Swagger and OpenAPI you may follow this tutorial 
 https://idratherbewriting.com/learnapidoc/openapi_tutorial.html
 
-Log in to your SwaggerHub account at [https://app.SwaggerHub.com/login](https://app.SwaggerHub.com/login) and select 'Create New' -> 'Create New API'
+Log in to your SwaggerHub account at https://app.SwaggerHub.com/login and select 'Create New' -> 'Create New API'
 
 <img src="/images/swhub1.png" alt="swagger" width="800"/>
 
@@ -147,7 +145,7 @@ $refs must reference a valid location in the document
 ```
 
 Effectively what is said here is that the "#/components/schemas/Student" is not defined. 
-You can find more about '$refs' here: [https://swagger.io/docs/specification/using-ref/](https://swagger.io/docs/specification/using-ref/)
+You can find more about '$refs' here: https://swagger.io/docs/specification/using-ref/
 
 ## OpenAPI Exercises
 
@@ -210,8 +208,8 @@ The GradeRecord properties to define are:
 
 It is useful to add 'example' fields in the properties. That way you API is easier to consume.
 
-You can find details about the 'example' field here: [https://swagger.io/docs/specification/adding-examples/](https://swagger.io/docs/specification/adding-examples/)
-You can find details about data models here: [https://swagger.io/docs/specification/data-models/](https://swagger.io/docs/specification/data-models/)
+You can find details about the 'example' field here: https://swagger.io/docs/specification/adding-examples/
+You can find details about data models here: https://swagger.io/docs/specification/data-models/
 
 ### Add Delete method
 
@@ -273,14 +271,14 @@ servers:
   description: SwaggerHub API Auto Mocking
 ```
 
-We need only one line so the service will always start http://localhost:8080/tutorial/1.0.0/ui/.
+We need only one line so the service will always start http://localhost:8080/tutorial/1.0.0/ui/ .
 
 
 Open the '__main__.py' file and press Run to start the flask server: 
 
 <img src="/images/pych4.png" alt="swagger" width="800"/>
 
-The UI API of your service will be in http://localhost:8080/tutorial/1.0.0/ui/. 
+The UI API of your service will be in http://localhost:8080/tutorial/1.0.0/ui/ .  
 
 On the UI select 'POST' and 'Try it out':
 
@@ -358,7 +356,7 @@ This is why we should create a new package in the code called 'service' and a py
 'student_service.py'. In this code template we use a simple file-based database to store and 
 query data called TinyDB. 
 
-More information on TinyDB can be found here: [https://tinydb.readthedocs.io/en/latest/getting-started.html](https://tinydb.readthedocs.io/en/latest/getting-started.html)
+More information on TinyDB can be found here: https://tinydb.readthedocs.io/en/latest/getting-started.html
 Now the 'default_controller.py' just needs to call the service's methods. 
 
 ---
@@ -421,7 +419,7 @@ For testing your code locally use this file: [docker-compose.yaml](sources/docke
  **NOTE**
 
  The docker-compose.yaml file above will be also used to run the postman tests during grading.  
- If you need to install Docker Compose you can follow the instructions here: https://docs.docker.com/compose/install/.
+ If you need to install Docker Compose you can follow the instructions here: https://docs.docker.com/compose/install/ .
 
 ---
 
@@ -458,12 +456,10 @@ container should be in your Dockerhub registry.
 
 ## Install MicroK8s 
 
-[//]: # (If you have access to a Kubernetes cluster you may skip this step)
-
-You can find MicroK8s installation instructions: [https://MicroK8s.io/](https://MicroK8s.io/)
+You can find MicroK8s installation instructions: https://MicroK8s.io/
 
 If you have access to a cloud VM you may install MicroK8s there. Alternatively you may also use 
-VirtualBox: [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
+VirtualBox: https://www.virtualbox.org/wiki/Downloads
 
 After you complete the installation make sure you start MicroK8s and enable DNS
 ```shell
@@ -550,7 +546,7 @@ This means that port 80 is mapped on port 31119 of each node in the K8s cluster.
  **NOTE**
 
  The mapped port will be different on your deployment. Now we can access Nginx from 
- http://IP:NODE_PORT.
+ http://IP:NODE_PORT .
 
 ---
 
