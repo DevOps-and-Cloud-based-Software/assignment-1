@@ -1,8 +1,9 @@
-name: Build and push container
+name: Build pdf
 
 on:
-  [push]
-
+  push:
+    tags:
+      - '*'
 env:
   GITHUB_TOKEN: ${{ github.token }}
   URL: https://raw.githubusercontent.com/DevOps-and-Cloud-based-Software/week1/${{ github.ref_name }}
@@ -21,23 +22,13 @@ jobs:
           cp README.md README_WITH_LINKS.md 
           sed -i -e "s#src=\"/images/#src=\"$URL/images/#g" README_WITH_LINKS.md 
           for file in sources/*; do sed -i -e "s#($file)#($URL/$file)#g" README_WITH_LINKS.md ; done
-         
-
-      - name: Check links
-        run: |
-          grep -o "http[^ ]*" README_WITH_LINKS.md | sed '/.*localhost/d' | sed '/.*NODE_PORT/d' > links
-          
 
       - name: urls-checker
         uses: urlstechie/urlchecker-action@master
         with:
-          # A comma-separated list of file types to cover in the URL checks
-          file_types: .md
-          # How many times to retry a failed request (each is logged, defaults to 1)
+          file_types: .md,yaml,json
           retry_count: 3
-
-          # A comma separated links to exclude during URL checks
-          exclude_urls: https://github.com/SuperKogito/URLs-checker/issues/1,https://github.com/SuperKogito/URLs-checker/issues/
+          exclude_patterns: http://IP:NODE_PORT/,http://localhost
           
 
       - name: Publish PDF Document
