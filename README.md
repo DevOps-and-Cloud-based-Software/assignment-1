@@ -50,7 +50,7 @@ At the end of this assignment you are expected to submit the following:
 ---
 
 
-* If the source code and dockerized service pass all the tests defined in newman you get 60%.
+* If the source code and dockerized service pass all the tests defined in newman you get 70%.
 * A passing mark will be given if the source code and dockerized service pass tests 1-5 in newman (see Section [Build Test and Docker Image](#build-test-and-publish-docker-image)).
 * The tests will run on the docker created from source i.e. from building the docker file from source and the docker image from your DockerHub account. 
 * An extra point will be given for the [MongoDB Integration (Optional)](#mongodb-integration--optional-).
