@@ -28,7 +28,6 @@ jobs:
         with:
           file_types: .md,yaml,json
           retry_count: 3
-          exclude_urls: http://IP:NODE_PORT
           exclude_patterns: http://IP:NODE_PORT,http://localhost,https://virtserver.swaggerhub.com/,http://IP
 
       - name: Publish PDF Document
