@@ -316,7 +316,7 @@ git push -u origin main
 In Pycharm create a package named 'service'. To do that right click on the 'swagger_server' package select 'New'->
 'Python Package' and enter the name 'service'
 
-<img src="/images/pych7.png" alt="swagger" width="800"/>
+<img src="/images/pych7.png" alt="swagger" width="300"/>
 
 Inside the service package create a new python file named 'student_service'
 
