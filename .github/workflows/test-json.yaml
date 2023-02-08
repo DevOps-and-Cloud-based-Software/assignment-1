@@ -1,0 +1,18 @@
+name: test jsons
+
+on:
+  [push]
+
+jobs:
+  test-json:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Extract version from package.json
+        uses: sergeysova/jq-action@v2
+        id: version
+        with:
+          cmd: 'jq . sources/*.json'
+
+      - name: Show output
+        run: 'echo "${{ steps.version.outputs.value }}"'
