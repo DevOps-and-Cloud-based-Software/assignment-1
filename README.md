@@ -260,17 +260,6 @@ Replace the 'requirements.txt' file with this [requirements.txt](sources/require
 
 Open the 'requirements.txt' file and right click and select install all packages.
 
-
----
-
- **NOTE**
-
- If the installation of the requirements fails use from command line. Go to the folder containing your project and type:
- ```
- source venv/bin/activate 
- pip install -r requirements.txt
- ```
-
 ---
 
 
