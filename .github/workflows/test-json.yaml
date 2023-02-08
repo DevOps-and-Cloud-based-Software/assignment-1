@@ -12,9 +12,9 @@ jobs:
 
       - name: test json
         uses: sergeysova/jq-action@v2
-        id: version
+        id: all
         with:
           cmd: 'jq . sources/*.json'
 
       - name: Show output
-        run: 'echo "${{ steps.version.outputs.value }}"'
+        run: 'echo "${{ steps.all.outputs.value }}"'
