@@ -123,6 +123,8 @@ Log in to your SwaggerHub account at [https://app.SwaggerHub.com/login](https://
 
 <img src="/images/swhub1.png" alt="swagger" width="800"/>
 
+Name your API 'tutorial'.
+
 Then select version 3.0.x and 'Template' 'Simple API' and press 'CREATE API'.
 
 <img src="/images/swgub2.png" alt="swagger" width="800"/>
@@ -130,8 +132,6 @@ Then select version 3.0.x and 'Template' 'Simple API' and press 'CREATE API'.
 You will get a OpenAPI template
 
 <img src="/images/swgub3.png" alt="swagger" width="800"/>
-
-Name your API 'tutorial'.
 
 
 Replace the definition with the following: [openAPI_1.yaml](sources/openAPI_1.yaml)
@@ -288,7 +288,7 @@ servers:
 We need only one line so the service will always start [http://localhost:8080/tutorial/1.0.0/ui/](http://localhost:8080/tutorial/1.0.0/ui/) .
 
 
-Open the '__main__.py' file and press Run to start the flask server: 
+Open the '\_\_main\_\_.py' file and press Run to start the flask server: 
 
 <img src="/images/pych4.png" alt="swagger" width="800"/>
 
