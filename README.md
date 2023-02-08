@@ -276,7 +276,7 @@ Open the 'requirements.txt' file and right click and select install all packages
 
 <img src="/images/pych3.png" alt="swagger" width="800"/>
 
-Open the file 'swagger_server/swagger/swagger.yaml' and in the section 'servers' you should have only one url and decryption.
+Open the file 'swagger_server/swagger/swagger.yaml' and in the section 'servers' you should have only one url and description.
 The servers section should look like this:
 ```yaml
 servers:
