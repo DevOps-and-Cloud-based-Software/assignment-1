@@ -1,0 +1,14 @@
+name: Newman Run
+
+on:
+  [push]
+
+jobs:
+  newman:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: matt-ball/newman-action@master
+        with:
+          collection: sources/collection.json
+          environment: sources/environment.json
