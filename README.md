@@ -47,6 +47,9 @@ At the end of this assignment you are expected to submit the following:
 
  **All links such as DockerHub and Git must be accessible from the day of submission and onwards.**
 
+ **Section [Deploy Web Service on Kubernetes (MicroK8s)](#deploy-web-service-on-k8s-cluster) is not graded and is not 
+ need in the report. It is there to give you an idea about Kubernetes.**
+
 ---
 
 
