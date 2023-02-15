@@ -14,7 +14,7 @@ jobs:
         uses: sergeysova/jq-action@v2
         id: all
         with:
-          cmd: 'jq . sources/*.json'
+          cmd: 'jq . sources/collection.json'
 
       - name: Show output
         run: 'echo "${{ steps.all.outputs.value }}"'
