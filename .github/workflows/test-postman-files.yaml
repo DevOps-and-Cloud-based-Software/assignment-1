@@ -15,7 +15,7 @@ jobs:
       uses: andstor/file-existence-action@v2
       with:
         files: "postman/collection.json"
-      fail: true
+        fail: true
 
     - name: Run API Tests
       id: run-newman
