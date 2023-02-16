@@ -42,5 +42,5 @@ jobs:
         fi
 
     - name: fail if empty
-      if: ${{ steps.fail-check.outputs.failed != 'true' }}
+      if: ${{ steps.fail-check.outputs.failed == 'true' }}
       run: exit 1
