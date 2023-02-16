@@ -23,9 +23,9 @@ jobs:
       with:
         collection: postman/collection.json
         environment: postman/environment.json
-        reporters: cli
-        iterationCount: 3
-        envVar: '[{ "key": "baseUrl", "value": "http://localhost:8080/tutorial/1.0.0/" }]'
+        reporters: '["emojitrain"]'
+        envVar: '[{ "key": "baseUrl", "value": "http://localhost/tutorial/1.0.0/" }]'
+        bail: true
 
     - name: Output summary to console
       run: echo ${{ steps.run-newman.outputs.summary }}

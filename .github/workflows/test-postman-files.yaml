@@ -18,3 +18,4 @@ jobs:
         environment: postman/environment.json
         reporters: '["emojitrain"]'
         envVar: '[{ "key": "baseUrl", "value": "http://localhost/tutorial/1.0.0/" }]'
+        bail: true
