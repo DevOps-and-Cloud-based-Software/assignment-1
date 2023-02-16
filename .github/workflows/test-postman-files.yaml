@@ -17,6 +17,12 @@ jobs:
         files: "sources/collection.json,sources/environment.json"
         fail: true
 
+    - name: Replace links
+      run: |
+        cp README.md README_WITH_LINKS.md 
+        sed -i -e "s#172.17.0.2:8080#localhost#g" sources/environment.json
+        for file in sources/*; do sed -i -e "s#($file)#($URL/$file)#g" README_WITH_LINKS.md ; done
+
     - name: Run API Tests
       id: run-newman
       uses: anthonyvscode/newman-action@master
