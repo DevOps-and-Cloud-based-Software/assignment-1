@@ -10,6 +10,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: |
+          python -m json.tool sources/collection.json
+          python -m json.tool sources/environment.json
+
+
       - name: check postman files
         id: run-newman
         uses: anthonyvscode/newman-action@v1
