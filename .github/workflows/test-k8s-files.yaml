@@ -5,7 +5,7 @@ on:
 
 jobs:
   test-k8s-files:
-    name: 'Yamllint'
+    name: 'k8s'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -14,7 +14,6 @@ jobs:
       - uses: balchua/microk8s-actions@v0.3.0
         with:
           channel: '1.25/stable'
-          addons: '["dns", "rbac", "hostpath-storage", "registry", "metrics-server"]'
       - name: Test MicroK8s
         id: k8s
         run: |
