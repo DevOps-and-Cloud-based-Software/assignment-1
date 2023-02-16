@@ -23,5 +23,6 @@ jobs:
       with:
         collection: sources/collection.json
         environment: sources/environment.json
+        reporters: cli
         envVar: '[{ "key": "baseUrl", "value": "http://localhost/tutorial/1.0.0/" }]'
         bail: false
