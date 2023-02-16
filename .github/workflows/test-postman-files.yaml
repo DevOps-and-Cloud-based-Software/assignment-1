@@ -1,0 +1,20 @@
+name: test postman files
+on: [push]
+
+jobs:
+  test-postman:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: run docker
+      run: |
+        docker run -d -p 80:80  nginx && \
+          docker ps && sleep 1
+    - name: Run API Tests
+      id: run-newman
+      uses: anthonyvscode/newman-action@master
+      with:
+        collection: postman/collection.json
+        environment: postman/environment.json
+        reporters: '["emojitrain"]'
+        envVar: '[{ "key": "baseUrl", "value": "http://localhost/tutorial/1.0.0/" }]'
