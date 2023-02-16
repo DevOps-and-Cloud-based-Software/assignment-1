@@ -31,7 +31,6 @@ jobs:
         collection: postman/collection.json
         environment: postman/environment.json
         reporters: cli
-        envVar: '[{ "key": "baseUrl", "value": "http://localhost:8080/tutorial/1.0.0/" }]'
         bail: true
 
     - name: Output summary to console
