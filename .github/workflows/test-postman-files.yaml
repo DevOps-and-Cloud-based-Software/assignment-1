@@ -21,8 +21,8 @@ jobs:
       id: run-newman
       uses: anthonyvscode/newman-action@master
       with:
-        collection: postman/collection.json
-        environment: postman/environment.json
+        collection: sources/collection.json
+        environment: sources/environment.json
         reporters: '["emojitrain"]'
         envVar: '[{ "key": "baseUrl", "value": "http://localhost/tutorial/1.0.0/" }]'
         bail: true
