@@ -26,14 +26,6 @@ jobs:
         reporters: cli
         suppressExitCode: true
 
-
-    - name: Check if we failed
-      uses: sergeysova/jq-action@v2
-      id: fail-check
-      with:
-        cmd: 'err=$(echo ${{ steps.run-newman.outputs.summary }} | jq . )  && if [ $err = "" ]; then echo "failed=true" >> $GITHUB_OUTPUT;; else echo "failed=false" >> $GITHUB_OUTPUT; fi
-CONTENT'
-
     - name: Check if we failed
       id: fail-check
       shell: bash
