@@ -28,14 +28,21 @@ jobs:
 
 
     - name: Check if we failed
+      uses: sergeysova/jq-action@v2
       id: fail-check
-      shell: bash
-      run: |
-        if [ "${{ steps.run-newman.outputs.summary_full }}" != '' ]; then
-          echo "failed=true" >> $GITHUB_OUTPUT;
-        else
-          echo "failed=false" >> $GITHUB_OUTPUT;
-        fi
+      with:
+        cmd: 'err=$(echo ${{ steps.run-newman.outputs.summary }} | jq . )  && if [ $err = "" ]; then echo "failed=true" >> $GITHUB_OUTPUT;; else echo "failed=false" >> $GITHUB_OUTPUT; fi 
+CONTENT'
+#    - name: Check if we failed
+#      id: fail-check
+#      shell: bash
+#      run: |
+#
+#        if [ "${{ steps.run-newman.outputs.summary }}" != '' ]; then
+#          echo "failed=true" >> $GITHUB_OUTPUT;
+#        else
+#          echo "failed=false" >> $GITHUB_OUTPUT;
+#        fi
 
     - name: fail if empty
       if: ${{ steps.fail-check.outputs.failed != 'true' }}
