@@ -33,6 +33,7 @@ jobs:
       with:
         cmd: 'err=$(echo ${{ steps.run-newman.outputs.summary }} | jq . )  && if [ $err = "" ]; then echo "failed=true" >> $GITHUB_OUTPUT;; else echo "failed=false" >> $GITHUB_OUTPUT; fi 
 CONTENT'
+
 #    - name: Check if we failed
 #      id: fail-check
 #      shell: bash
