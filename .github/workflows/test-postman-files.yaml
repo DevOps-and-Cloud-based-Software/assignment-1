@@ -26,6 +26,8 @@ jobs:
         reporters: cli
         suppressExitCode: true
 
-    - name: Output summary to console
-      run: |
-        echo ${{ steps.run-newman.outputs.summary_full }}
+    - name: Extract version from package.json
+      uses: sergeysova/jq-action@v2
+      id: version
+      with:
+        cmd: 'echo ${{ steps.run-newman.outputs.summary_full }} jq .'
