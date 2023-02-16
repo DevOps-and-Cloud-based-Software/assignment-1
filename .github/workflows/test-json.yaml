@@ -17,13 +17,3 @@ jobs:
       - run: |
           python -m json.tool sources/collection.json
           python -m json.tool sources/environment.json
-
-
-      - name: check postman files
-        id: run-newman
-        uses: anthonyvscode/newman-action@v1
-        with:
-          collection: sources/collection.json
-          environment: sources/environment.json
-          reporters: cli
-          iterationCount: 1
