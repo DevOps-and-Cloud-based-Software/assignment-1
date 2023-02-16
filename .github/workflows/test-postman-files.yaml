@@ -27,5 +27,5 @@ jobs:
         suppressExitCode: true
 
     - name: fail if empty
-      if: toJSON(steps.run-newman.outputs.summary_full) == ""
+      if: toJSON(steps.run-newman.outputs.summary_full) == {}
       run: exit 1
