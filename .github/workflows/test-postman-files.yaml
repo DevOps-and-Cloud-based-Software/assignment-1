@@ -10,6 +10,13 @@ jobs:
       run: |
         docker run -d -p 80:80  nginx && \
           docker ps && sleep 1
+
+    - name: "Check file existence"
+      uses: andstor/file-existence-action@v2
+      with:
+        files: "postman/collection.json"
+      fail: true
+
     - name: Run API Tests
       id: run-newman
       uses: anthonyvscode/newman-action@master
