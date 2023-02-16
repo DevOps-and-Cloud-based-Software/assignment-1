@@ -342,7 +342,7 @@
 						"auth": {
 							"type": "noauth"
 						},
-						"method": "GET",
+						"method": "GET"
 						"header": [],
 						"url": {
 							"raw": "{{baseUrl}}/student/000000000000000000000000",
