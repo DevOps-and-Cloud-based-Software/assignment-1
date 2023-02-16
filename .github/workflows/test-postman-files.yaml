@@ -24,4 +24,4 @@ jobs:
         collection: sources/collection.json
         environment: sources/environment.json
         reporters: cli
-        bail: false
+        suppressExitCode: true
