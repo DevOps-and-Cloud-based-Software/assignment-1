@@ -18,4 +18,6 @@ jobs:
         id: k8s
         run: |
           kubectl apply -f sources/student_service.yaml
+          kubectl apply -f sources/mongodb.yaml
+          sleep 5 
           kubectl get pods -A -o wide
