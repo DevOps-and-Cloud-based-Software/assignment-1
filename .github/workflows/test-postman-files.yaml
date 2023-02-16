@@ -26,6 +26,7 @@ jobs:
         reporters: cli
         suppressExitCode: true
 
+
     - name: Check if we failed
       id: fail-check
       shell: bash
@@ -34,10 +35,10 @@ jobs:
       run: |
         printf '%s\n' "$JSON_DOC" > summary.json
         cat summary.json
-        if [ -s summary.json ]; then
-          echo "failed=true" >> $GITHUB_OUTPUT;
-        else
+        if grep -q Collection summary.json; then
           echo "failed=false" >> $GITHUB_OUTPUT;
+        else
+          echo "failed=true" >> $GITHUB_OUTPUT;
         fi
 
     - name: fail if empty
