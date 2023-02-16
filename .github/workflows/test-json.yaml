@@ -10,11 +10,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: test json
-        uses: sergeysova/jq-action@v2
-        id: all
+      - name: check postman files
+        id: run-newman
+        uses: anthonyvscode/newman-action@v1
         with:
-          cmd: 'jq . sources/*.json'
-
-      - name: Show output
-        run: 'echo "${{ steps.all.outputs.value }}"'
+          collection: sources/collection.json
+          environment: sources/environment.json
+          reporters: cli
+          iterationCount: 1
