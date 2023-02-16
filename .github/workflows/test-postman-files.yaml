@@ -11,10 +11,10 @@ jobs:
         docker run -d -p 80:80  nginx && \
           docker ps && sleep 1
 
-    - name: "Check file existence"
+    - name: "Check files existence"
       uses: andstor/file-existence-action@v2
       with:
-        files: "postman/collection.json"
+        files: "sources/collection.json,sources/environment.json"
         fail: true
 
     - name: Run API Tests
