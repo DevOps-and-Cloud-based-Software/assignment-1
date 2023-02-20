@@ -7,9 +7,9 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 8080
-    protocol: TCP
-    name: http
+    - port: 8080
+      protocol: TCP
+      name: http
   selector:
     io.kompose.service: service
 ---
@@ -38,7 +38,7 @@ spec:
       - env:
         - name: MONGO_URI
           value: mongodb://mongo:27017
-        image: IMAGE_NAME
+        image: nginx
         name: service
         imagePullPolicy: Always
         ports:
