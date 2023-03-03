@@ -188,7 +188,7 @@ The Student properties to define are:
 | student_id    | number (integer format) | 
 | first_name    | string                  |
 | last_name     | string                  |
-| gradeRecords  | array                   |
+| grade_records  | array                   |
 
 The GradeRecord properties to define are:
 
