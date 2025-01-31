@@ -206,7 +206,7 @@ method. Under the '/student/{student_id}' path add the following:
 You will need to fill in the proper responses for 200, 400, and 404. More information about responses can be found here: [https://swagger.io/docs/specification/describing-responses/](https://swagger.io/docs/specification/describing-responses/)
 ## Generate Python Code
 
-Now that we have the OpenAPI definitions, we can create the server stub on Python. Select 'Export'->'Server Stub'->
+Now that we have the OpenAPI definitions, we can create the server stub on Python. Select 'Codegen'->'Server Stub'->
 'python-flask'
 
 <img src="/images/swgub6.png" alt="swagger" width="800"/>
