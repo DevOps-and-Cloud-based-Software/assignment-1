@@ -382,7 +382,7 @@ docker run -it -p 8080:8080 <REPO_NAME>/student_service
 ---
 
 
-## MongoDB Integration (Optional)
+## MongoDB Integration
 
 
 The code provided above uses an internal database called TinyDB. Change the code so that your service saves data in an mongoDB. 
@@ -393,7 +393,7 @@ For testing your code locally use this file: [docker-compose.yaml](sources/docke
 
  **NOTE**
 
- The docker-compose.yaml file above will be also used to run the postman tests during grading.  
+ The docker-compose.yaml file above will be also used to run the postman tests.  
  If you need to install Docker Compose you can follow the instructions here: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/) .
 
 ---
