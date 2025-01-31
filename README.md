@@ -3,7 +3,11 @@
 
 # Introduction
 
-  In this tutorial, we will use OpenAPI to define a RESTful web service and Python to implement it.  The tutorial contains the following steps:
+In this tutorial, we will use OpenAPI to define a RESTful web service and Python to implement it. 
+
+The RESTful web service will use a database to store data.
+
+More specifically the steps of this tutorial are the following: 
 
 1. [Write OpenAPI definition using SwaggerHub](#write-openapi-definition)
 2. [Generate the service stubs in Python](#generate-python-code)
@@ -12,69 +16,32 @@
 5. [Write Tests](#write-tests)
 6. [Deploy Web Service on Kubernetes (MicroK8s)](#deploy-web-service-on-k8s-cluster)
 
-
-# Reporting and assessment
-
-## Reporting
-After the tutorial, each student should write a short report (max 4 pages) to discuss the results and reflect lessons learned: 
-
-  * The report should contain: 
-    + **DevOps Practices**: Explain the DevOps stages you practiced during the tutorial and discuss their primary objectives.
-    + **OpenAPI Exercises**: Summarize the results of the following exercises (for details, see the Section  [OpenAPI Exercises](#openapi-exercises)):
-      - [Define Objects](#define-objects)
-      - [Add Delete method](#add-delete-method)
-    + **[MongoDB Integration (Optional)](#mongodb-integration--optional-)**: Explain the modifications you had on your code and Dockerfile to connect to DB.
-    + **Question 1**: In the Docker file we use the 'python:3.9-alpine' image as a base image. What are the advantages and disadvantages of using the Alpine Linux distribution in Docker?
-
-## Assessment
-
----
-
- **IMPORTANT**
-
- You should submit:
- * A short report (see [Reporting](#reporting) for details)
- * The Name of your published docker(s) in [https://hub.docker.com/](https://hub.docker.com/) . Must be able to perform (docker pull <REPO/NAME>)
- * The Git repository link
- * If you choose the optional exercise task, i.e., the MongoDB integration, submit **only** the code for connecting to MongoDB. The testing will be done using the '[docker-compose.yaml](sources/docker-compose.yaml)'
-
- **Please DO NOT include your code in your report.**
-
- **All links, such as DockerHub and Git, must be accessible from the day of submission and onwards.**
-
- **Section [Deploy Web Service on Kubernetes (MicroK8s)](#deploy-web-service-on-k8s-cluster) will not graded and is not needed in the report. It is there to give you an idea about Kubernetes.**
-
----
-
-
-* If the source code and dockerized service pass all the tests defined in newman you get 70%.
-* A passing mark will be given if the source code and dockerized service pass tests 1-5 in newman (see Section [Build Test and Docker Image](#build-test-and-publish-docker-image)).
-* The tests will run on the docker created from source i.e. from building the docker file from source and the docker image from your DockerHub account. 
-* An extra point will be given for the [MongoDB Integration (Optional)](#mongodb-integration--optional-).
-* The rest will be determined by your report. 
-
 # Background
 
 ## OpenAPI and Swagger
-Swagger is an implementation of OpenAPI. Swagger contains a tool that helps developers design, build, document, and consume RESTful Web services. 
-Applications implemented based on OpenAPI interface files can automatically generate documentation of methods, parameters, and models. This helps keep the documentation, client libraries, and source code in sync.
-You can find a short technical explanation here [https://www.youtube.com/watch?v=pRS9LRBgjYg](https://www.youtube.com/watch?v=pRS9LRBgjYg)
+Swagger is an implementation of OpenAPI. Swagger contains a tool that helps developers design, build, document, and consume RESTful Web services.
+Applications implemented based on OpenAPI interface files can automatically generate documentation of methods, parameters and models. This helps keep the documentation, client
+libraries, and source code in sync.
+You can find a short technical explanation [here](https://www.youtube.com/watch?v=pRS9LRBgjYg)
 
 ## Git
-Git is an open-source distributed version control system. Version control helps keep track of changes in a project and allows for collaboration between many developers.
-You can find a short technical explanation here [https://www.youtube.com/watch?v=wpISo9TNjfU](https://www.youtube.com/watch?v=wpISo9TNjfU)
+Git is an open source distributed version control system. Version control helps keep track of changes in a project and allows for collaboration between many developers.
+You can find a short technical explanation [here](https://www.youtube.com/watch?v=wpISo9TNjfU)
 
 ## GitHub Actions 
-GitHub Actions automates your software development workflows from within GitHub. In GitHub Actions, a workflow is an automated process that you set up in your GitHub repository. You can build, test, package, release, or deploy any project on GitHub with a workflow.
+GitHub Actions automates your software development workflows from within GitHub. In GitHub Actions, a workflow is an automated process that you set up in your GitHub
+repository. You can build, test, package, release, or deploy any project on GitHub with a workflow.
 
 ## Docker
-Docker performs operating-system-level virtualization, also known as "containerization." Docker uses the resource isolation features of the Linux kernel to allow independent "containers" to run within a Linux instance.
-You can find a short technical explanation on containerization here [https://www.youtube.com/watch?v=0qotVMX-J5s](https://www.youtube.com/watch?v=0qotVMX-J5s)
+
+Docker performs operating-system-level virtualization, also known as "containerization". Docker uses the resource isolation features of the Linux kernel to allow independent
+"containers" to run within a Linux instance.
+You can find a short technical explanation on containerization [here](https://www.youtube.com/watch?v=0qotVMX-J5s)
 
 
 ## Kubernetes (MicroK8s)
-Kubernetes is an open-source container orchestration system for automating software deployment, scaling, and management. 
-You can find a short technical explanation on container orchestration here [https://www.youtube.com/watch?v=kBF6Bvth0zw](https://www.youtube.com/watch?v=kBF6Bvth0zw)
+Kubernetes is an open-source container orchestration system for automating software deployment, scaling, and management.
+You can find a short technical explanation on container orchestration [here](https://www.youtube.com/watch?v=kBF6Bvth0zw)
 
 
 # Prepare your Development Environment 
@@ -86,7 +53,9 @@ In case you don’t have a GitHub account, follow these instructions to create o
 In case you don't have a Dock Hub account, follow these instructions to create one: [https://hub.docker.com/signup](https://hub.docker.com/signup)
 
 ## SwaggerHub Account
-Log in [https://app.SwaggerHub.com/login](https://app.SwaggerHub.com/login) and select 'Login with GitHub.' Alternatively, you can select to sign up.
+
+If you have GitHub Account you may go to [https://app.SwaggerHub.com/login](https://app.SwaggerHub.com/login) 
+and select 'Log In with GitHub'. Alternatively, you can select to sign up.
 
 ## Install Docker and Docker Compose on your Local machine
 You can find instructions on how to install Docker here: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
@@ -99,8 +68,9 @@ docker run hello-world
 You can find instructions on how to install Docker Compose here: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/) 
 
 ## Install Pycharm 
-In this tutorial, we will use the Pycharm Integrated Development Environment (IDE). If you have a 
-preferred IDE, and you are free to use it.
+
+In this tutorial we will use the Pycharm Integrated Development Environment (IDE). If you have a
+preferred IDE you are free to use it.
 
 You can find instructions on how to install Pycharm here: [https://www.jetbrains.com/pycharm/download/](https://www.jetbrains.com/pycharm/download/)
 
@@ -416,7 +386,7 @@ docker run -it -p 8080:8080 <REPO_NAME>/student_service
 ---
 
 
-## MongoDB Integration (Optional)
+## MongoDB Integration
 
 
 The code provided above uses an internal database called TinyDB. Change the code so that your service saves data in a mongoDB. 
@@ -427,7 +397,7 @@ For testing your code locally use this file: [docker-compose.yaml](sources/docke
 
  **NOTE**
 
- The docker-compose.yaml file above will be also used to run the postman tests during grading.  
+ The docker-compose.yaml file above will be also used to run the postman tests.  
  If you need to install Docker Compose you can follow the instructions here: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/) .
 
 ---
