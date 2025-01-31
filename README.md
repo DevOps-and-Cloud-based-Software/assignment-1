@@ -1,4 +1,5 @@
-% RESTful services, Docker and Kubernetes
+% DevOps Lab assignment 1: Tutorial on RESTful services, Docker, and Kubernetes
+% University of Amsterdam
 
 # Introduction
 
@@ -32,6 +33,7 @@ GitHub Actions automates your software development workflows from within GitHub.
 repository. You can build, test, package, release, or deploy any project on GitHub with a workflow.
 
 ## Docker
+
 Docker performs operating-system-level virtualization, also known as "containerization". Docker uses the resource isolation features of the Linux kernel to allow independent
 "containers" to run within a Linux instance.
 You can find a short technical explanation on containerization [here](https://www.youtube.com/watch?v=0qotVMX-J5s)
@@ -45,12 +47,13 @@ You can find a short technical explanation on container orchestration [here](htt
 # Prepare your Development Environment 
 
 ## Create GitHub Account
-If you don’t have an account already follow these instructions: [https://github.com/join](https://github.com/join)
+In case you don’t have a GitHub account, follow these instructions to create one: [https://github.com/join](https://github.com/join)
 
 ## Setup Docker Hub
-If you don’t have an account already follow these instructions: [https://hub.docker.com/signup](https://hub.docker.com/signup)
+In case you don't have a Dock Hub account, follow these instructions to create one: [https://hub.docker.com/signup](https://hub.docker.com/signup)
 
 ## SwaggerHub Account
+
 If you have GitHub Account you may go to [https://app.SwaggerHub.com/login](https://app.SwaggerHub.com/login) 
 and select 'Log In with GitHub'. Alternatively, you can select to sign up.
 
@@ -58,19 +61,20 @@ and select 'Log In with GitHub'. Alternatively, you can select to sign up.
 You can find instructions on how to install Docker here: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
 You may also find a detailed tutorial on Docker here: [https://docker-curriculum.com/](https://docker-curriculum.com/)
 
-To test if your installation is running you may test docker by typing:
+To test if your installation is running, you may test docker by typing:
 ```shell
 docker run hello-world
 ```
 You can find instructions on how to install Docker Compose here: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/) 
 
 ## Install Pycharm 
+
 In this tutorial we will use the Pycharm Integrated Development Environment (IDE). If you have a
 preferred IDE you are free to use it.
 
 You can find instructions on how to install Pycharm here: [https://www.jetbrains.com/pycharm/download/](https://www.jetbrains.com/pycharm/download/)
 
-If you are using snap you can type:
+If you are using snap, you can type:
 ```shell
 sudo snap install pycharm-community --classic
 ```
@@ -78,7 +82,7 @@ You may also find a detailed tutorial on Pycharm here:
 [https://www.jetbrains.com/help/pycharm/creating-and-running-your-first-python-project.html](https://www.jetbrains.com/help/pycharm/creating-and-running-your-first-python-project.html)
 
 # Write OpenAPI Definition
-In this section we will define a web service interface that will support the Create, Read, Update, Delete (CRUD) pattern 
+In this section, we will define a web service interface that will support the Create, Read, Update, Delete (CRUD) pattern 
 for manipulating resources using OpenAPI. To get a more in-depth understanding of Swagger and OpenAPI you may follow this tutorial 
 [https://idratherbewriting.com/learnapidoc/openapi_tutorial.html](https://idratherbewriting.com/learnapidoc/openapi_tutorial.html)
 
@@ -92,7 +96,7 @@ Then select version 3.0.x and 'Template' 'Simple API' and press 'CREATE API'.
 
 <img src="/images/swgub2.png" alt="swagger" width="800"/>
 
-You will get a OpenAPI template
+You will get an OpenAPI template
 
 <img src="/images/swgub3.png" alt="swagger" width="800"/>
 
@@ -106,7 +110,7 @@ $refs must reference a valid location in the document
 $refs must reference a valid location in the document
 ```
 
-Effectively what is said here is that the "#/components/schemas/Student" is not defined. 
+Effectively, what is said here is that the "#/components/schemas/Student" is not defined. 
 You can find more about '$refs' here: [https://swagger.io/docs/specification/using-ref/](https://swagger.io/docs/specification/using-ref/)
 
 ## OpenAPI Exercises
@@ -168,14 +172,14 @@ The GradeRecord properties to define are:
 
 ---
 
-It is useful to add 'example' fields in the properties. That way you API is easier to consume.
+It is helpful to add 'example' fields in the properties. That way, your API is easier to consume.
 
 You can find details about the 'example' field here: [https://swagger.io/docs/specification/adding-examples/](https://swagger.io/docs/specification/adding-examples/)
 You can find details about data models here: [https://swagger.io/docs/specification/data-models/](https://swagger.io/docs/specification/data-models/)
 
 ### Add Delete method
 
-The API definition at the moment only has 'GET' and 'POST' methods. We will add a 'DELETE' 
+At the moment, the API definition only has 'GET' and 'POST' methods. We will add a 'DELETE' 
 method. Under the '/student/{student_id}' path add the following:
 ```yaml
     delete:
@@ -202,7 +206,7 @@ method. Under the '/student/{student_id}' path add the following:
 You will need to fill in the proper responses for 200, 400, and 404. More information about responses can be found here: [https://swagger.io/docs/specification/describing-responses/](https://swagger.io/docs/specification/describing-responses/)
 ## Generate Python Code
 
-Now that we have the OpenAPI definitions we can create the server stub on python. Select 'Export'->'Server Stub'->
+Now that we have the OpenAPI definitions, we can create the server stub on Python. Select 'Export'->'Server Stub'->
 'python-flask'
 
 <img src="/images/swgub6.png" alt="swagger" width="800"/>
@@ -213,7 +217,7 @@ Save the 'python-flask-server-generated.zip' and unzip the archive. Open Pycharm
 <img src="/images/pych1.png" alt="swagger" width="800"/>
 
 
-To create the virtual environment for the project go to 'File'->'Settings'->'Project'->'Python Interpreter' or ‘Pycharm'->'Preferences'->Project'->'Python Interpreter'. Select Python version 3.8 or later. Then select the gear icon to add a new environment:
+To create the virtual environment for the project, go to 'File'->'Settings'->'Project'->'Python Interpreter' or ‘Pycharm'->'Preferences'->Project'->'Python Interpreter'. Select Python version 3.8 or later. Then select the gear icon to add a new environment:
 
 <img src="/images/pych2.png" alt="swagger" width="800"/>
 
@@ -236,7 +240,7 @@ servers:
   description: SwaggerHub API Auto Mocking
 ```
 
-We need only one line so the service will always start [http://localhost:8080/tutorial/1.0.0/ui/](http://localhost:8080/tutorial/1.0.0/ui/) .
+We need only one line, so the service will always start [http://localhost:8080/tutorial/1.0.0/ui/](http://localhost:8080/tutorial/1.0.0/ui/).
 
 
 Open the '\_\_main\_\_.py' file and press Run to start the flask server: 
@@ -302,7 +306,7 @@ Now you can add the corresponding methods in the 'default_controller.py'. To do 
 from swagger_server.service.student_service import *
 ```
 
-And in the 'add_student' student method we add the 'add(body)' in the rerun statement so now the method becomes :
+In the 'add_student' method we add the 'add(body)' in the rerun statement, so now the method becomes :
 
 ```python
 def add_student(body=None):  # noqa: E501
@@ -323,8 +327,8 @@ def add_student(body=None):  # noqa: E501
 
 Do the same for the rest of the methods. For example, in the ‘delete_student’ method in the 'default_controller.py' file, you need to add ‘delete(student_id)’ in the return statement. 
 
-In general, it is a good idea to write application using layered architecture. By segregating 
-an application into tiers, a developer can modify or add a layer, instead of reworking the 
+In general, it is a good idea to write an application using layered architecture. By segregating 
+an application into tiers, a developer can modify or add a layer instead of reworking the 
 entire application.
 
 This is why we should create a new package in the code called 'service' and a python file named
@@ -332,7 +336,7 @@ This is why we should create a new package in the code called 'service' and a py
 query data called TinyDB. 
 
 More information on TinyDB can be found here: [https://tinydb.readthedocs.io/en/latest/getting-started.html](https://tinydb.readthedocs.io/en/latest/getting-started.html)
-Now the 'default_controller.py' just needs to call the service's methods. 
+Now, the 'default_controller.py' just needs to call the service's methods. 
 
 ---
 
@@ -344,7 +348,7 @@ Now the 'default_controller.py' just needs to call the service's methods.
 
 # Build Test and Docker Image 
 
-You can now build your web service as a Docker image DockerHub. To do that open the Dockerfile 
+You can now build your web service as a Docker image DockerHub. To do that, open the Dockerfile 
 in the Pycharm project.
 
 and update the python version from:
@@ -374,7 +378,7 @@ docker run -it -p 8080:8080 <REPO_NAME>/student_service
 
  **NOTE**
 
- Don't forget to stop the server from PyCharm otherwise you'll get an error:
+ Don't forget to stop the server from PyCharm otherwise, you'll get an error:
  ```
  shell docker: Error response from daemon: driver failed programming external connectivity on endpoint trusting_joliot (8cbc8523e15eb68f343d048ab59a9e6d): Error starting userland proxy: listen tcp4 0.0.0.0:8080: bind: address already in use. ERRO[0001] error waiting for the container: context canceled
 ```
@@ -385,8 +389,8 @@ docker run -it -p 8080:8080 <REPO_NAME>/student_service
 ## MongoDB Integration
 
 
-The code provided above uses an internal database called TinyDB. Change the code so that your service saves data in an mongoDB. 
-This includes configuration files for the database endpoint database names the Dockerfile itself etc.
+The code provided above uses an internal database called TinyDB. Change the code so that your service saves data in a mongoDB. 
+This includes configuration files for the database endpoint, database names, the Dockerfile itself etc.
 For testing your code locally use this file: [docker-compose.yaml](sources/docker-compose.yaml). Make sure you replace the image with your own.
 
 ---
@@ -405,13 +409,13 @@ Next you need to add your Docker hub and token to your Github project secrets.
 To create secrets follow these instructions [https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
 
 You need to create two secrets, one named REGISTRY_USERNAME and one REGISTRY_PASSWORD.
-Therefore, you need to run the above instructions twice. First time the name of the secret will be REGISTRY_USERNAME and second will be REGISTRY_PASSWORD.
+Therefore, you need to run the above instructions twice. The first time the name of the secret will be REGISTRY_USERNAME, and the second will be REGISTRY_PASSWORD.
 
 In your code directory create a new folder named 'postman'. In the new 'postman' folder add these files: 
 * [collection.json](sources/collection.json)
 * [environment.json](sources/environment.json)
 
-Make sure your code in the Git repository is up-to-date. Go to the repository and page create a new file with 
+Make sure your code in the Git repository is up-to-date. Go to the repository page and create a new file with 
 'Add file'->'Create new file'. On the top define the path of your file.
 
 ```
@@ -421,11 +425,9 @@ Make sure your code in the Git repository is up-to-date. Go to the repository an
 
 Set the contents of your file as: [main.yml](sources/main.yml)
 
-Commit and push your changes to GitHub. After that, any time you commit new code to your repository your code will be 
-automatically tested and the Docker container will be build and pushed in DockerHub. 
+Commit and push your changes to GitHub. After that, any time you commit new code to your repository, your code will be automatically tested, and the Docker container will be built and pushed in DockerHub. 
 
-To check the tests go to your Github repository and clik on 'Actions'. After the action is successfully completed the build 
-container should be in your Dockerhub registry. 
+To check the tests, you can go to your Github repository and click on 'Actions'. After the action is completed, the build container should be in your Dockerhub registry. 
 
 
 ---
@@ -447,10 +449,10 @@ The REGISTRY_USERNAME is your **username** for docker hub, NOT your docker hub r
 
 You can find MicroK8s installation instructions: [https://MicroK8s.io/](https://MicroK8s.io/)
 
-If you have access to a cloud VM you may install MicroK8s there. Alternatively you may also use 
+If you have access to a cloud VM you may install MicroK8s there. Alternatively, you may also use 
 VirtualBox: [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 
-After you complete the installation make sure you start MicroK8s and enable DNS
+After you complete the installation, make sure you start MicroK8s and enable DNS
 ```shell
 microk8s start
 microk8s enable dns
@@ -460,9 +462,9 @@ microk8s enable dns
 
  **NOTE**
 
- In linux you may need to use these commands with sudo 
+ In Linux, you may need to use these commands with sudo 
  
- If you get en error:
+ If you get an error:
  ```
  sudo: microk8s: command not found
  ```
@@ -472,14 +474,14 @@ microk8s enable dns
  ```
  sudo /snap/bin/microk8s start
  ```
- or add /snap/bin to you PATH.
+ or add /snap/bin to your PATH.
 
 ---
 
 
 ## Test K8s Cluster
 
-This is a basic Kubernetes deployment of Nginx. On the master node create a Nginx deployment:
+This is a basic Kubernetes deployment of Nginx. On the master node, create a Nginx deployment:
 ```shell
 microk8s kubectl create deployment nginx --image=nginx
 ```
@@ -504,7 +506,7 @@ NAME                               DESIRED   CURRENT   READY   AGE
 replicaset.apps/nginx-748c667d99   1         1         0       13s
 ```
 You will notice in the first line 'ContainerCreating'. This means that the K8s cluster is downloading and starting the 
-Nginx container. After some minutes if you run again:
+Nginx container. After some minutes, if you run again:
 ```shell
 microk8s kubectl get all
 ```
@@ -524,8 +526,8 @@ NAME                               DESIRED   CURRENT   READY   AGE
 replicaset.apps/nginx-748c667d99   1         1         1       43s
 ```
 
-At this point Nginx is running on the K8s cluster, however it is only accessible from within the cluster. To expose 
-Nginx to the outside world we should type: 
+At this point, Nginx is running on the K8s cluster, however it is only accessible from within the cluster. To expose 
+Nginx to the outside world, we should type: 
 ```shell
 microk8s kubectl create service nodeport nginx --tcp=80:80
 ```
@@ -571,11 +573,11 @@ image: IMAGE_NAME
 with the name of your image as typed in the docker push command. 
 
 
-If you chose to integrate with an extremal database you will need to add the Deployment and 
+If you choose to integrate with an extremal database you will need to add the Deployment and 
 service for MongoDB:
 [mongodb.yaml](sources/mongodb.yaml)
 
-To create all the deployments and services type in the K8s folder:
+To create all the deployments and services, type in the K8s folder:
 ```shell
 microk8s kubectl apply -f .
 ```
@@ -604,7 +606,7 @@ replicaset.apps/service-6c75dff7db   1         1         1       53s
 
 ```
 
-Note that in this output 'service/service' is mapped to 30726. In your case it may be a different number.
+Note that in this output, 'service/service' is mapped to 30726. In your case, it may be a different number.
 
 Now your service should be available on http://IP:NODE_PORT/
 
