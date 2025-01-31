@@ -3,7 +3,7 @@
 
 # Introduction
 
-  In this tutorial we will use OpenAPI to define a RESTful web service and use Python to implement it.  The tutorial contains the following steps:
+  In this tutorial, we will use OpenAPI to define a RESTful web service and Python to implement it.  The tutorial contains the following steps:
 
 1. [Write OpenAPI definition using SwaggerHub](#write-openapi-definition)
 2. [Generate the service stubs in Python](#generate-python-code)
@@ -16,14 +16,14 @@
 # Reporting and assessment
 
 ## Reporting
-At the end of this assignment, each student should write a short report (max 4 pages) to explain the results and lessons learned from the tutorial: 
+After the tutorial, each student should write a short report (max 4 pages) to discuss the results and reflect lessons learned: 
 
   * The report should contain: 
-    + **Introduction**: List which of the DevOps stages you practiced with this assignment and what are their primary objectives.
-    + **OpenAPI Exercises**: Report on the following exercises (for details see on the Section  [OpenAPI Exercises](#openapi-exercises)):
+    + **DevOps Practices**: Explain the DevOps stages you practiced during the tutorial and discuss their primary objectives.
+    + **OpenAPI Exercises**: Summarize the results of the following exercises (for details, see the Section  [OpenAPI Exercises](#openapi-exercises)):
       - [Define Objects](#define-objects)
       - [Add Delete method](#add-delete-method)
-    + **[MongoDB Integration (Optional)](#mongodb-integration--optional-)**: If you choose to integrate an external database, report on how the modifications you had to make on your code and Dockerfile to connect to DB.
+    + **[MongoDB Integration (Optional)](#mongodb-integration--optional-)**: Explain the modifications you had on your code and Dockerfile to connect to DB.
     + **Question 1**: In the Docker file we use the 'python:3.9-alpine' image as a base image. What are the advantages and disadvantages of using the Alpine Linux distribution in Docker?
 
 ## Assessment
@@ -33,11 +33,10 @@ At the end of this assignment, each student should write a short report (max 4 p
  **IMPORTANT**
 
  You should submit:
-
- * A written report (see [Reporting](#reporting) for details)
+ * A short report (see [Reporting](#reporting) for details)
  * The Name of your published docker(s) in [https://hub.docker.com/](https://hub.docker.com/) . Must be able to perform (docker pull <REPO/NAME>)
  * The Git repository link
- * If you choose the optional exercise task i.e. the MongoDB integration submit **only** the code for connecting to MongoDB. The testing will be done using the '[docker-compose.yaml](sources/docker-compose.yaml)'
+ * If you choose the optional exercise task, i.e., the MongoDB integration, submit **only** the code for connecting to MongoDB. The testing will be done using the '[docker-compose.yaml](sources/docker-compose.yaml)'
 
  **Please DO NOT include your code in your report.**
 
