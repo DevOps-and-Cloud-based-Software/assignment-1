@@ -1,14 +1,14 @@
 # DevOps and Cloud Based Software  
-## Lab 01 Tutorial on RESTful services, Docker, and Kubernetes
+## Lab 1-1: RESTful services, Docker and Kubernetes
 University of Amsterdam
 
 # Introduction
 
-In this tutorial, we will use OpenAPI to define a RESTful web service and Python to implement it. 
+This tutorial will use OpenAPI to define a RESTful web service and Python to implement it. 
 
 The RESTful web service will use a database to store data.
 
-More specifically the steps of this tutorial are the following: 
+More specifically, the steps of this tutorial are the following: 
 
 1. [Write OpenAPI definition using SwaggerHub](#write-openapi-definition)
 2. [Generate the service stubs in Python](#generate-python-code)
@@ -31,7 +31,7 @@ You can find a short technical explanation [here](https://www.youtube.com/watch?
 
 ## GitHub Actions 
 GitHub Actions automates your software development workflows from within GitHub. In GitHub Actions, a workflow is an automated process that you set up in your GitHub
-repository. You can build, test, package, release, or deploy any project on GitHub with a workflow.
+repository. You can build, test, package, release, or deploy any project on GitHub as a workflow.
 
 ## Docker
 
@@ -55,7 +55,7 @@ In case you don't have a Dock Hub account, follow these instructions to create o
 
 ## SwaggerHub Account
 
-If you have GitHub Account you may go to [https://app.SwaggerHub.com/login](https://app.SwaggerHub.com/login) 
+If you have a GitHub account, you may go to [https://app.SwaggerHub.com/login](https://app.SwaggerHub.com/login) 
 and select 'Log In with GitHub'. Alternatively, you can select to sign up.
 
 ## Install Docker and Docker Compose on your Local machine
@@ -70,7 +70,7 @@ You can find instructions on how to install Docker Compose here: [https://docs.d
 
 ## Install Pycharm 
 
-In this tutorial we will use the Pycharm Integrated Development Environment (IDE). If you have a
+In this tutorial, we will use the Pycharm Integrated Development Environment (IDE). If you have a
 preferred IDE you are free to use it.
 
 You can find instructions on how to install Pycharm here: [https://www.jetbrains.com/pycharm/download/](https://www.jetbrains.com/pycharm/download/)
