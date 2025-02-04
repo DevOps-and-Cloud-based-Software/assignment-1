@@ -20,12 +20,12 @@ More specifically the steps of this tutorial are the following:
 
 ## OpenAPI and Swagger
 Swagger is an implementation of OpenAPI. Swagger contains a tool that helps developers design, build, document, and consume RESTful Web services.
-Applications implemented based on OpenAPI interface files can automatically generate documentation of methods, parameters and models. This helps keep the documentation, client
+Applications implemented based on OpenAPI interface files can automatically generate documentation of methods, parameters, and models. This helps keep the documentation, client
 libraries, and source code in sync.
 You can find a short technical explanation [here](https://www.youtube.com/watch?v=pRS9LRBgjYg)
 
 ## Git
-Git is an open source distributed version control system. Version control helps keep track of changes in a project and allows for collaboration between many developers.
+Git is an open-source distributed version control system. Version control helps keep track of changes in a project and allows for collaboration between many developers.
 You can find a short technical explanation [here](https://www.youtube.com/watch?v=wpISo9TNjfU)
 
 ## GitHub Actions 
