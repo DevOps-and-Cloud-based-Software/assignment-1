@@ -1,4 +1,5 @@
-% DevOps Lab assignment 1: Tutorial on RESTful services, Docker, and Kubernetes
+# DevOps and Cloud Based Software  
+## Lab 01 Tutorial on RESTful services, Docker, and Kubernetes
 % University of Amsterdam
 
 # Introduction
