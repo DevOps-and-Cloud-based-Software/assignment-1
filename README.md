@@ -1,6 +1,6 @@
 # DevOps and Cloud Based Software  
 ## Lab 01 Tutorial on RESTful services, Docker, and Kubernetes
-% University of Amsterdam
+University of Amsterdam
 
 # Introduction
 
